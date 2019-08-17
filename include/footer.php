@@ -1,11 +1,11 @@
 
-<div class="w3-row w3-padding w3-light-blue" style="width:100%">
+<div class="w3-row w3-padding w3-light-blue " style="width:100%;">
             <!-- Here Goes Line Breaking between WebContent and Footer  -->
 </div>
 
 <footer style="text-align:center">
                     <!-- FooterPage -->
-                    <div class="w3-row w3-margin">
+                    <div class="w3-row w3-margin w3-hover-shadow w3-round">
                         <div class="w3-col s4">
                             <!--Here Goes Map Information -->
                             <h4>

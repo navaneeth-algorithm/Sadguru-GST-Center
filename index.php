@@ -1,3 +1,19 @@
+<?php
+    //Getting file name as parameter
+    $fileName = 'home.php';
+    //File that is included in index
+    $fileList = array("home.php","about.php","deposit.php");
+    if(isset($_GET['page']))
+    {
+        $pageName = $_GET['page'];
+        $fileName = $pageName .'.php';
+    }
+    if(!in_array($fileName,$fileList))
+    {
+        header("Location:headfootTemp.php");
+    }
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +28,7 @@
 </head>
 <body class="w3-display-container w3-light-gray">
 
-        <div id="WebContent"  style="width:70%;margin-left:210px;" class="w3-white">
+        <div id="WebContent"  style="width:70%;margin-left:210px;margin-bottom:15px;" class="w3-white">
 
 
             <?php include('include/header.php'); ?>
@@ -27,7 +43,26 @@
                     <div class="w3-row">
                         <div class="w3-col s9">
                             <!-- Here Goes Content Excludeing banner & right bar Con-->
-                            WebContent Here
+
+                            <svg viewBox="0,0,500,100">
+                                <text x="" y="50">
+                                    <a href="#">Welcome to Sadhguru Souharda Sahakari Limited </a>
+                                    <animate attributeName="x" from="-100" to="400" dur="9s" 
+                                    repeatCount="indefinite">
+                                </text>
+                            </svg>
+
+                            <?php
+                            $success = file_exists($fileName);
+                            if(!$success)
+                            {
+                                echo "<h2>Page Yet to Come</h2>";
+                            }
+                            else{
+                                
+                                include($fileName);
+                            }
+                            ?>
                         </div>
                         <div class="w3-col s3">
                             <!-- Here Goes Right bar -->

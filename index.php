@@ -27,7 +27,7 @@
                     <div class="w3-row">
                         <div class="w3-col s9">
                             <!-- Here Goes Content Excludeing banner & right bar Con-->
-                            HelloWorld
+                            WebContent Here
                         </div>
                         <div class="w3-col s3">
                             <!-- Here Goes Right bar -->

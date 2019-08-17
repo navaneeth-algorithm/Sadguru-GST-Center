@@ -17,27 +17,30 @@
                             </div>
                         </div>
                         <div class="w3-col s8 w3-padding" >
-                                    <h4>
+                                    <h3>
                                         Contacts
-                                    </h4>
-                                    <p>
-                                        Sadhguru Skill Development Centre
-                                    </p>
-                                    <p>
-                                        Kinnimulki,
-                                    </p>
-                                    <p>
-                                        Udupi – 576101 
-                                    </p>
-                                    <p>
-                                        Email: sadhguruudupi@gmail.com 
-                                    </p>
-                                    <p>
-                                        Phone: +91 9448327884
-                                    </p>
-                                    <h4>
+                                    </h3>
+                                    <div style="" >
+                                        <p>
+                                            Sadhguru Skill Development Centre
+                                        </p>
+                                        <p>
+                                            Kinnimulki,
+                                        </p>
+                                        <p>
+                                            Udupi – 576101 
+                                        </p>
+                                        <p>
+                                            Email: sadhguruudupi@gmail.com 
+                                        </p>
+                                        <p>
+                                            Phone: +91 9448327884
+                                        </p>
+                                    </div>
+
+                                    <h3>
                                         Follow Us On
-                                    </h4>
+                                    </h3>
                                     <i class="fa fa-facebook" aria-hidden="true"></i>
                                     <i class="fa fa-twitter"  aria-hidden="true"></i>
                                     <i class="fa fa-linkedin" aria-hidden="true"></i>

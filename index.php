@@ -32,6 +32,7 @@
                         <div class="w3-col s3">
                             <!-- Here Goes Right bar -->
                             <?php include('include/rightbar.php');  ?>
+                            
                         </div>
                     </div>
 

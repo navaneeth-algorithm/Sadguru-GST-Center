@@ -17,10 +17,11 @@
                             </div>
                         </div>
                         <div class="w3-col s8 w3-padding" >
-                                    <h3>
-                                        Contacts
-                                    </h3>
-                                    <div style="" >
+
+                                    <div align="left" style="margin-left:250px" >
+                                        <h3>
+                                            Contacts
+                                        </h3>
                                         <p>
                                             Sadhguru Skill Development Centre
                                         </p>
@@ -36,15 +37,15 @@
                                         <p>
                                             Phone: +91 9448327884
                                         </p>
+                                        <h3>
+                                            Follow Us On
+                                        </h3>
+                                        <span class="w3-xlarge"><i class="fa fa-facebook" aria-hidden="true"></i></span>
+                                        <span class="w3-xlarge"><i class="fa fa-twitter"  aria-hidden="true"></i></span>
+                                        <span class="w3-xlarge"><i class="fa fa-linkedin" aria-hidden="true"></i></span>
+                                        <span class="w3-xlarge"><i class="fa fa-dribbble" aria-hidden="true"></i></span>
                                     </div>
 
-                                    <h3>
-                                        Follow Us On
-                                    </h3>
-                                    <i class="fa fa-facebook" aria-hidden="true"></i>
-                                    <i class="fa fa-twitter"  aria-hidden="true"></i>
-                                    <i class="fa fa-linkedin" aria-hidden="true"></i>
-                                    <i class="fa fa-dribbble" aria-hidden="true"></i>
                         </div>
 
                     </div>

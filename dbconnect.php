@@ -1,15 +1,11 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "Neethas@2504";
-$dbname = "Society";
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-//$mysqli = new mysqli("localhost", "root", "Neethas@2504", "Society");
-//$result = $mysqli->query("SELECT 'Hello, dear MySQL user!' AS _message FROM DUAL");
-/*$result = $mysqli->query("SELECT * FROM parameter");
-$row = $result->fetch_assoc();
-while($row = $result->fetch_assoc()){
-    echo $row['Name'];
-};*/
+$dbhost="148.72.232.182";
+$dbuser="MahathiAdmin";
+$dbpass="msol@123";
+$dbname="Society";
 
+$conn=mysqli_connect($dbhost,$dbuser,$dbpass,$dbname);
+if (!$conn){
+	echo "Not connected to Database";
+}
 ?>

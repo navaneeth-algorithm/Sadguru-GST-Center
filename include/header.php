@@ -1,3 +1,17 @@
+
+<?php
+include("dbConnect.php");
+$query="SELECT * FROM `parameter`";
+$suc= mysqli_query($conn, $query) or die(mysqli_error($conn));  
+if(mysqli_num_rows($suc))
+{
+  // $row=mysqli_fetch_assoc($suc);
+  $row = mysqli_fetch_assoc($suc);
+  $companyName = $row['CompanyName'];
+  $contactDetails = $row['PhoneNumber'];
+}
+?>
+
 <header class="">    
                     <div class="w3-container w3-hover-shadow w3-white w3-row w3-margin">
                         <!-- Navigation Bar Container -->
@@ -7,34 +21,34 @@
                             <div class="w3-col s6"><img src="images/mlogo.jpg" heigth="100px" width="100px"></div>
                         </div>
 
-                        <div class="w3-row w3-margin">
+                        <div class="w3-row w3-margin" >
                             <!-- Row containing contact Details  -->
                             <div class="w3-col s6" >
                                 <!-- Name of company -->
-                                <span>  Sadhguru  Souharda Sahakari Limited</span>
+                                <span class="w3-xlarge w3-text-red" ><?php echo $companyName;  ?></span>
                             </div>
 
                             <div class="w3-col s6" >
                                 <!-- Contact Details -->
-                                <span>Contact +91  9448327884 </span>
+                                <span class="w3-xlarge w3-text-red" ><?php echo $contactDetails;  ?></span>
                             </div>
 
                         </div>
 
                         <div class="w3-bar w3-row ">
                             <!-- Row containing Navigation Details  -->
-                            <a href="index.php?page=home" class="w3-bar-item w3-button w3-small">Home</a>
-                            <a href="index.php?page=about" class="w3-bar-item w3-button w3-small">About</a>
-                            <a href="index.php?page=board" class="w3-bar-item w3-button w3-small">Board</a>
-                            <a href="index.php?page=deposit" class="w3-bar-item w3-button w3-small">Deposits</a>
-                            <a href="index.php?page=loan" class="w3-bar-item w3-button w3-small">Loan</a>
-                            <a href="index.php?page=service" class="w3-bar-item w3-button w3-small">Other Services</a>
-                            <a href="index.php?page=branch" class="w3-bar-item w3-button w3-small">Branch</a>
-                            <a href="index.php?page=report" class="w3-bar-item w3-button w3-small">Report</a>
-                            <a href="index.php?page=notice" class="w3-bar-item w3-button w3-small">Notice Boards</a>
-                            <a href="index.php?page=news" class="w3-bar-item w3-button w3-small">Latest News</a>
-                            <a href="index.php?page=links" class="w3-bar-item w3-button w3-small">Links</a>
-                            <a href="index.php?page=contacts" class="w3-bar-item w3-button w3-small">Contacts</a>
+                            <a href="index.php?page=home" class="w3-bar-item w3-button ">Home</a>
+                            <a href="headfootTemp.php?page=about" class="w3-bar-item w3-button ">About</a>
+                            <a href="headfootTemp.php?page=board" class="w3-bar-item w3-button ">Board</a>
+                            <a href="headfootTemp.php?page=deposit" class="w3-bar-item w3-button ">Deposits</a>
+                            <a href="headfootTemp.php?page=loan" class="w3-bar-item w3-button ">Loan</a>
+                            <a href="headfootTemp.php?page=service" class="w3-bar-item w3-button ">Other Services</a>
+                            <a href="headfootTemp.php?page=branch" class="w3-bar-item w3-button ">Branch</a>
+                            <a href="headfootTemp.php?page=report" class="w3-bar-item w3-button ">Report</a>
+                            <a href="headfootTemp.php?page=notice" class="w3-bar-item w3-button ">Notice Boards</a>
+                            <a href="headfootTemp.php?page=news" class="w3-bar-item w3-button ">Latest News</a>
+                            <a href="headfootTemp.php?page=links" class="w3-bar-item w3-button ">Links</a>
+                            <a href="headfootTemp.php?page=contact" class="w3-bar-item w3-button ">Contacts</a>
                             
                         </div>
 

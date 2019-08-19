@@ -1,3 +1,13 @@
+<?php
+    
+    if(isset($_GET['page']))
+    {
+        $pageName = $_GET['page'];
+        $fileName = $pageName .'.php';
+    }
+    
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,11 +18,15 @@
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" 
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <title>SadhGuru WebPage</title>
-    <title>Template </title>
+    <style>
+        .w3-myfontCambria {
+            font-family:Cambria,Georgia,serif; 
+            }
+    </style>
 </head>
 <body class="w3-display-container w3-light-gray">
 
-<div id="WebContent"  style="width:70%;margin-left:210px;margin-bottom:15px;" class="w3-white">
+<div id="WebContent"  style="width:70%;margin-left:210px;margin-bottom:15px;" class="w3-white w3-myfontCambria">
 
 
     <?php include('include/header.php'); ?>
@@ -30,16 +44,16 @@
                     <!-- Here Goes Content Excludeing banner & right bar Con-->
 
                     <!-- Animation of title  -->
-                    <svg viewBox="0,0,500,100">
+                    <svg viewBox="0,0,700,100">
                         <text x="" y="50">
                             <a href="#">Welcome to Sadhguru Souharda Sahakari Limited </a>
-                            <animate attributeName="x" from="-100" to="400" dur="9s" 
+                            <animate attributeName="x" from="100" to="-400" dur="20s" 
                             repeatCount="indefinite">
                         </text>
                     </svg>
                     <!--Include Content  -->
 
-                    <!-- <!?php include('fileName.php');   ?> -->
+                    <?php include($fileName); ?>
 
                     <!-- Within this -->
                 </div>

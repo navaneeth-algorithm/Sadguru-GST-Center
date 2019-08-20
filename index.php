@@ -44,7 +44,7 @@
                     <div class="w3-row">
                         <div class="w3-col s9">
                             <!-- Here Goes Content Excludeing banner & right bar Con-->
-
+                            <!-- Animation of title  -->
                             <svg viewBox="0,0,700,100">
                                 <text x="" y="50">
                                     <a href="index.php">Welcome to Sadhguru Souharda Sahakari Limited </a>

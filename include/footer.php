@@ -1,5 +1,31 @@
+<?php
+                  include("dbConnect.php");
+                  $query="SELECT * FROM `map`";
+                    $suc= mysqli_query($conn, $query) or die(mysqli_error($conn));  
+                    
+                  if(mysqli_num_rows($suc))
+                  {
+                    // $row=mysqli_fetch_assoc($suc);
+                    $row = mysqli_fetch_assoc($suc);
+                    $latitude = $row['latitude'];
+                    $longitude = $row['longitude'];
+                  }
+                  $query="SELECT * FROM `parameter`";
+                  $suc= mysqli_query($conn, $query) or die(mysqli_error($conn));  
+                if(mysqli_num_rows($suc))
+                {
+                  // $row=mysqli_fetch_assoc($suc);
+                  $row = mysqli_fetch_assoc($suc);
+                  $Address = $row['Address'];
+                  $Email = $row['Email'];
+                  $Phone = $row['PhoneNumber'];
+                }
+        ?>
 
-<div class="w3-row w3-padding w3-light-blue " style="width:100%;">
+
+
+
+<div class="w3-row w3-padding w3-light-gray " style="width:100%;">
             <!-- Here Goes Line Breaking between WebContent and Footer  -->
 </div>
 
@@ -12,8 +38,11 @@
                                 Google Map 
                             </h4>
                             <div>
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3882.3715592215117!2d74.7399860147288!3d13.327147990623374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbcbb0cfec504f5%3A0xd853c0e4e70612d5!2sSadhguru!5e0!3m2!1sen!2sin!4v1566026704204!5m2!1sen!2sin" 
-                                width="300" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d970.5928897701017!2d
+                                <?php //longitude 
+                                echo $latitude;//"74.7416275291908"?>!3d<?php //latitude
+                                echo $longitude;//"13.327147999413995" ?>!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbcbb0cfec504f5%3A0xd853c0e4e70612d5!2sSadhguru!5e0!3m2!1sen!2sus!4v1565676288944!5m2!1sen!2sus" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                <!--iframe src="http://maps.google.com/maps?q=<!-?php echo "13.3267015"?>,<!-?php echo "74.7421266" ?>&z=15&output=embed" width="360" height="270" frameborder="0" style="border:0"></iframe-->
                             </div>
                         </div>
                         <div class="w3-col s8 w3-padding" >
@@ -23,19 +52,13 @@
                                             Contacts
                                         </h3>
                                         <p>
-                                            Sadhguru Skill Development Centre
+                                            <?php echo $Address;  ?>
                                         </p>
                                         <p>
-                                            Kinnimulki,
+                                            Email: <?php echo $Email;  ?> 
                                         </p>
                                         <p>
-                                            Udupi – 576101 
-                                        </p>
-                                        <p>
-                                            Email: sadhguruudupi@gmail.com 
-                                        </p>
-                                        <p>
-                                            Phone: +91 9448327884
+                                            Phone: <?php echo $Phone;   ?>
                                         </p>
                                         <h3>
                                             Follow Us On

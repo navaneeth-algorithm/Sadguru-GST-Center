@@ -47,8 +47,8 @@
 
                             <svg viewBox="0,0,700,100">
                                 <text x="" y="50">
-                                    <a href="#">Welcome to Sadhguru Souharda Sahakari Limited </a>
-                                    <animate attributeName="x" from="-100" to="400" dur="9s" 
+                                    <a href="index.php">Welcome to Sadhguru Souharda Sahakari Limited </a>
+                                    <animate attributeName="x" from="400" to="-400" dur="20s" 
                                     repeatCount="indefinite">
                                 </text>
                             </svg>

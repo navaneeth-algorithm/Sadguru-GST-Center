@@ -9,6 +9,8 @@ if(mysqli_num_rows($suc))
   $row = mysqli_fetch_assoc($suc);
   $companyName = $row['CompanyName'];
   $contactDetails = $row['PhoneNumber'];
+  $row = mysqli_fetch_assoc($suc);
+  $imagePath = $row['Name'];
 }
 ?>
 
@@ -18,7 +20,7 @@ if(mysqli_num_rows($suc))
 
                         <div class="w3-row w3-margin">
                             <!-- Row containing Logo  -->
-                            <div class="w3-col s6"><img src="images/mlogo.jpg" heigth="100px" width="100px"></div>
+                            <div class="w3-col s6"><img src=<?php echo $imagePath."/logo.png"  ?> heigth="100px" width="100px"></div>
                         </div>
 
                         <div class="w3-row w3-margin" >
@@ -28,9 +30,9 @@ if(mysqli_num_rows($suc))
                                 <span class="w3-xlarge w3-text-red" ><?php echo $companyName;  ?></span>
                             </div>
 
-                            <div class="w3-col s6" >
+                            <div class="w3-col s6" align="right">
                                 <!-- Contact Details -->
-                                <span class="w3-xlarge w3-text-red" ><?php echo $contactDetails;  ?></span>
+                                <i class="fa fa-phone w3-xlarge w3-text-red" aria-hidden="true"></i> <span class="w3-xlarge w3-text-red" ><?php echo $contactDetails;  ?></span>
                             </div>
 
                         </div>
@@ -49,6 +51,7 @@ if(mysqli_num_rows($suc))
                             <a href="headfootTemp.php?page=news" class="w3-bar-item w3-button ">Latest News</a>
                             <a href="headfootTemp.php?page=links" class="w3-bar-item w3-button ">Links</a>
                             <a href="headfootTemp.php?page=contact" class="w3-bar-item w3-button ">Contacts</a>
+                            <a href="headfootTemp.php?page=download" class="w3-bar-item w3-button ">Downloads</a>
                             
                         </div>
 

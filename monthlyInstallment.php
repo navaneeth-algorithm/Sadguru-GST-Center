@@ -1,11 +1,10 @@
 <div class="">
 
-    <div class="w3-row">
-        <div class="w3-col s6">
+    <div class="w3-row " >
+        <div class="w3-col s6" style="margin-left:180px">
 
-            <div class="w3-light-gray ">
-                <div class="w3-panel w3-container w3-padding  w3-light-grey w3-text-dark-gray w3-center">
-
+            <div class="w3-light-gray" >
+                <div class="w3-panel w3-container w3-padding  w3-light-gray w3-text-dark-gray w3-center">
                     <h2 class="w3-center">Monthly Installement Calculator</h2>
                     <div class="w3-row w3-margin">
                         <input class="w3-input w3-border" id="principal" type="text" placeholder="Principal:">
@@ -20,7 +19,6 @@
                     </div>
 
                     <button class="w3-button w3-dark-gray" onclick="getValues()">Calculate</button>
-
                 </div>
             </div>
 

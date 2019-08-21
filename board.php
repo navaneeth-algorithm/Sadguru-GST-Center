@@ -1,30 +1,69 @@
-<div class="w3-margin" >
-          <?php
-          include("dbConnect.php");
-          $query="SELECT * FROM `designation`";
-          $suc= mysqli_query($conn, $query) or die(mysqli_error($conn));  
-          if(mysqli_num_rows($suc))
-          {
-            // $row=mysqli_fetch_assoc($suc);
-            while($row = mysqli_fetch_assoc($suc)) {
+<div class="w3-container">
 
-          ?> 
-              <span class="w3-margin"></span>
-              <div  class="w3-row w3-large w3-text-red"><?php echo $row['Name']; ?><!--Designation of Board of#bbf2e8;  directors--></div>
-                  
-            
-              <?php
-                        $id=$row['id'];
-                        $innerquery="SELECT * FROM `boarddirector` WHERE Designation=$id";
-                        $suc1= mysqli_query($conn, $innerquery) or die(mysqli_error($dbcon)); 
-                        while($row1 = mysqli_fetch_assoc($suc1)) {
-                          
+<div>
+    <div class="w3-col s6">
 
-                      ?> 
-              <div class="w3-row"><?php echo $row1['Name']; ?><!--Name of Board of directors--></div>
-              <?php
-                        }}} ?>
+        <!-- Here Goes 2 Profile -->
+        <div class="w3-row">
+            <div class="w3-col s6">
+              <span class="w3-center">This is president</span>
+              <?php include('include/cardDisplay.php'); ?>
+            </div>
+            <div class="w3-col s6">
+              <span class="w3-center">This is Vice president</span>
+              <?php include('include/cardDisplay.php'); ?>
+            </div>
+        </div>
+        <span class="w3-row">This is Directors Place</span>
+        <div class="w3-row">
+            <div class="w3-col s4">
+                
+                <?php include('include/cardDisplay.php'); ?>
+            </div>
+            <div class="w3-col s4">
+                
+                <?php include('include/cardDisplay.php'); ?>
+            </div>
+            <div class="w3-col s4">
+                
+                <?php include('include/cardDisplay.php'); ?>
+            </div>
+        </div>
+        <div class="w3-row">
+            <div class="w3-col s4">
+                
+                <?php include('include/cardDisplay.php'); ?>
+            </div>
+            <div class="w3-col s4">
+                
+                <?php include('include/cardDisplay.php'); ?>
+            </div>
+            <div class="w3-col s4">
+                
+                <?php include('include/cardDisplay.php'); ?>
+            </div>
+        </div>
 
 
-      <!-- Here Goes MileStone Graph -->
+    </div>
+
+    <div class="w3-col s6">
+          <div class="w3-row w3-light-gray w3-panel w3-leftbar w3-sand">  
+                <div class="w3-col s4">
+                    This is header
+                </div>
+                <div class="w3-container">
+                  <img src="images/President.jpg" width="70" height="100" style="width:50%" />
+                </div>
+                <div class="w3-container">
+                    This is Message from President
+                </div>
+                <div class="w3-container">
+                      This is footer
+                </div>
+          </div>
+    </div>
+
+</div>
+
 </div>

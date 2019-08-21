@@ -5,17 +5,17 @@
 
             <div class="w3-light-gray" >
                 <div class="w3-panel w3-container w3-padding  w3-light-gray w3-text-dark-gray w3-center">
-                    <h2 class="w3-center">Monthly Installement Calculator</h2>
+                    <h4 class="w3-center">Monthly Installement Calculator</h4>
                     <div class="w3-row w3-margin">
-                        <input class="w3-input w3-border" id="principal" type="text" placeholder="Principal:">
+                        <input class="w3-input w3-border" id="principal" type="text" placeholder="Loan Amount">
                     </div>
 
                     <div class="w3-row w3-margin">
-                        <input class="w3-input w3-border" id="interest" type="text" placeholder="Intrest">
+                        <input class="w3-input w3-border" id="interest" type="text" placeholder="Interest Rate">
                     </div>
 
                     <div class="w3-row w3-margin">
-                        <input class="w3-input w3-border" id="terms" type="text" placeholder="terms">
+                        <input class="w3-input w3-border" id="terms" type="text" placeholder="Number of Months">
                     </div>
 
                     <button class="w3-button w3-dark-gray" onclick="getValues()">Calculate</button>
@@ -27,7 +27,7 @@
         </div>
     </div>
 
-            	<div class="w3-row" id="Result"></div>
+            	<div class="w3-row w3-panel w3-light-gray w3-text-dark-gray w3-center" id="Result"></div>
                 <script language="javascript">
 var wwOpenInstalled;
 if (wwOpenInstalled || parent.wwOpenInstalled) {
@@ -94,14 +94,14 @@ function amort(balance, interestRate, terms)
         1+monthlyRate, -terms)));
 	    
 	//begin building the return string for the display of the amort table
-    var result = "Loan amount: " + balance.toFixed(2) +  "<br />" + 
-        "Interest rate: " + (interestRate*100).toFixed(2) +  "%<br />" +
-        "Number of months: " + terms + "<br />" ;
+    var result = "<span class=' w3-justify w3-margin'>Loan amount: " + balance.toFixed(2) +  "</span>" + 
+        "<span class=' w3-justify w3-margin'>Interest rate: " + (interestRate*100).toFixed(2) +  "%</span>" +
+        "<span class=' w3-justify w3-margin'>Number of months: " + terms + "</span>" ;
        // "Monthly payment: " + payment.toFixed(2) + "<br />" +
         
     //add header row for table to return string
-	result += "<table border='2'><tr><th>Month #</th><th>Balance</th>" + 
-        "<th>Interest</th><th>Principal</th><th>Total</th>"+"<th>ending balance</th>";
+	result += "<table class='w3-table-all w3-centered w3-hoverable'><tr><th> Month </th><th>Balance</th>" + 
+        "<th>Interest</th><th>Principal</th><th>Total</th>"+"<th>Ending balance</th>";
     
     /**
      * Loop that calculates the monthly Loan amortization amounts then adds 
@@ -163,7 +163,7 @@ function amort(balance, interestRate, terms)
 		balance = endingbalce;		
 	}
 	
-   result += "Total paid: " + p3.toFixed(2) ; "<br /><br />";
+   result += "<span class=' w3-justify'>Total paid: " + p3.toFixed(2) ; "</span><br /><br />";
         
 	//Final piece added to return string before returning it - closes the table
     result += "</table>";

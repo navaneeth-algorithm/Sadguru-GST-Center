@@ -19,4 +19,7 @@
         </div>
         <span class="w3-margin"></span>
         <?php }} ?>
+      <div class="w3-row">
+      <?php include("include/Graph.php");   ?>
+      </div>
 </div>

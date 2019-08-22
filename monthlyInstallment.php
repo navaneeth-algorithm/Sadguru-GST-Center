@@ -4,7 +4,7 @@
         <div class="w3-col s6" style="margin-left:180px">
 
             <div class="w3-light-gray" >
-                <div class="w3-panel w3-container w3-padding  w3-light-gray w3-text-dark-gray w3-center">
+                <div id='installmentCalculator' class="w3-panel w3-container w3-padding  w3-light-gray w3-text-dark-gray w3-center">
                     <h4 class="w3-center">Monthly Installement Calculator</h4>
                     <div class="w3-row w3-margin">
                         <input class="w3-input w3-border" id="principal" type="text" placeholder="Loan Amount">
@@ -100,7 +100,7 @@ function amort(balance, interestRate, terms)
        // "Monthly payment: " + payment.toFixed(2) + "<br />" +
         
     //add header row for table to return string
-	result += "<table class='w3-table-all w3-centered w3-hoverable'><tr><th> Month </th><th>Balance</th>" + 
+	result += "<table id='tableStart' class='w3-table-all w3-centered w3-hoverable'><tr><th> Month </th><th>Balance</th>" + 
         "<th>Interest</th><th>Principal</th><th>Total</th>"+"<th>Ending balance</th>";
     
     /**
@@ -166,7 +166,7 @@ function amort(balance, interestRate, terms)
    result += "<span class=' w3-justify'>Total paid: " + p3.toFixed(2) ; "</span><br /><br />";
         
 	//Final piece added to return string before returning it - closes the table
-    result += "</table>";
+    result += "</table><br><span class='w3-button w3-dark-gray w3-margin'><a href='#installmentCalculator' style='text-decoration:none'>Move Up</a></span>";
 	
 	//returns the concatenated string to the page
     return result;

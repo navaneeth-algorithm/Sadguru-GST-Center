@@ -64,7 +64,8 @@
 		var chart = new CanvasJS.Chart("chartContainer", { 
 			theme: "light2",
 			title: {
-				text: "MileStone of Sadhguru from - 2014 to 2019"
+				text: "MileStone of Sadhguru from - 2014 to 2019",
+				fontSize:15
 			},
 			subtitles: [{
 				text: "In Years"

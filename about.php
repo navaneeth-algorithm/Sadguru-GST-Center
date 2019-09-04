@@ -19,9 +19,6 @@
         </div>
         <span class="w3-margin"></span>
         <?php }} ?>
-        
-      <!-- Here Goes MileStone Graph -->
-      <div class="w3-row">
-      <?php include("include/Graph.php");   ?>
-      </div>
+      <!--Buisness Statastics  -->
+     <?php include('include/BuisnessStatastics.php'); ?>
 </div>

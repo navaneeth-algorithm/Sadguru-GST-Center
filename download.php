@@ -2,28 +2,29 @@
 <table class="w3-table-all w3-hoverable">
     <thead>
       <tr class="w3-light-grey">
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Points</th>
+        <th>File Name</th>
+        <th>Description</th>
+        <th>Download</th>
       </tr>
     </thead>
+    <?php
+                  include("dbConnect.php");
+                  $query="SELECT * FROM `download`";
+                	$suc= mysqli_query($conn, $query) or die(mysqli_error($conn));  
+                  if(mysqli_num_rows($suc))
+                  {
+                    // $row=mysqli_fetch_assoc($suc);
+                    while($row = mysqli_fetch_assoc($suc)) {
+        ?>
     <tr>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
+      <td><?php echo $row['Name']; ?></td>
+      <td><?php echo $row['Description']; ?></td>
+      <td><a href="<?php echo $downloadFolder."/".$row['Path'].".pdf"  ?>"><i class='fa fa-fw fa-download'></i></a></td>
     </tr>
-    <tr>
-      <td>Eve</td>
-      <td>Jackson</td>
-      <td>94</td>
-    </tr>
-    <tr>
-      <td>Adam</td>
-      <td>Johnson</td>
-      <td>67</td>
-    </tr>
-  </table>
-    <?php  
+    <?php
+                    }}  
     ?>
+  </table>
+    
 
 </div>

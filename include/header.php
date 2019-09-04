@@ -11,6 +11,9 @@ if(mysqli_num_rows($suc))
   $contactDetails = $row['PhoneNumber'];
   $row = mysqli_fetch_assoc($suc);
   $imagePath = $row['Name'];
+  $row = mysqli_fetch_assoc($suc);
+  $downloadFolder = $row['Name'];
+  
 }
 ?>
 
@@ -20,7 +23,7 @@ if(mysqli_num_rows($suc))
 
                         <div class="w3-row w3-margin">
                             <!-- Row containing Logo  -->
-                            <div class="w3-col s6"><img src=<?php echo $imagePath."/logo.png"  ?> heigth="100px" width="100px"></div>
+                            <div class="w3-col s6"><img src=<?php echo $imagePath."/Logo.jpg"  ?> heigth="100px" width="100px"></div>
                         </div>
 
                         <div class="w3-row w3-margin" >

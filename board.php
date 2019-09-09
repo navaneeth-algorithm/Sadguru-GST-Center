@@ -114,7 +114,7 @@
 
             <div class="w3-card" style="width:50%;margin-left:150px">
                 <span class="w3-margin">Message from President</span>
-                <img src="images/President.png" alt="Person" style="width:100%">
+                <img src="https://pbs.twimg.com/profile_images/551405404853243905/QxoOyrx8_400x400.jpeg" alt="Person" style="width:100%">
                 <div class="w3-container">
                     <h4><b>Simon</b></h4>
                     <p>The boss of all bosses</p>

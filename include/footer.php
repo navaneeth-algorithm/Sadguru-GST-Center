@@ -51,14 +51,14 @@
                                         <h3>
                                             Contacts
                                         </h3>
-                                        <p>
-                                            <?php echo $Address;  ?>
+                                        <p><i  class="fa fa-home">
+                                            <?php echo $Address;  ?></i>
                                         </p>
                                         <p>
-                                            Email: <?php echo $Email;  ?> 
+                                            <i class="fa fa-envelope">  <?php echo $Email;  ?> </i>
                                         </p>
                                         <p>
-                                            Phone: <?php echo $Phone;   ?>
+                                            <i class="fa fa-phone"> <?php echo $Phone;   ?></i>
                                         </p>
                                         <h3>
                                             Follow Us On

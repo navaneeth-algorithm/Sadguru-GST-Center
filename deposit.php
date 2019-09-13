@@ -52,7 +52,7 @@
                         
               <div class="w3-row  w3-light-gray" style="margin-top:10px;">
                 <?php 
-                        include($row["shortNameContent"].".php");
+                        //include($row["shortNameContent"].".php");
                         //include("sadhguruCashCertificateContent.php");
                   ?>
             </div>

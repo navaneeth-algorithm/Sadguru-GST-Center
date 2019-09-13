@@ -35,7 +35,7 @@
         
         <div class="w3-row">
             <div class="w3-col s6">
-              <span class="" style="margin-left:34px">President</span>
+              <span class="w3-text-red w3-large" style="margin-left:34px">President</span>
 
               <!-- Here Goes DisplayCard of President -->
                 <div class="w3-card w3-light-grey w3-margin">
@@ -51,7 +51,7 @@
             </div>
             
             <div class="w3-col s6">
-              <span class="" style="margin-left:34px">Vice President</span>
+              <span class="w3-text-red w3-large" style="margin-left:34px">Vice President</span>
               
               <!-- Here Goes DisplayCard of Vice President -->
                 <div class="w3-card w3-light-grey w3-margin">
@@ -69,7 +69,7 @@
         </div>
 
 
-        <span class="w3-row">Directors</span>
+        <span class="w3-row w3-text-red w3-large">Directors</span>
         
         <?php 
              include("dbconnect.php");
@@ -114,10 +114,10 @@
 
             <div class="w3-card" style="width:50%;margin-left:150px">
                 <span class="w3-margin">Message from President</span>
-                <img src="https://pbs.twimg.com/profile_images/551405404853243905/QxoOyrx8_400x400.jpeg" alt="Person" style="width:100%">
+                <img src="<?php echo $imagePath."/".$presidentImage;  ?>" alt="Person" style="width:100%">
                 <div class="w3-container">
-                    <h4><b>Simon</b></h4>
-                    <p>The boss of all bosses</p>
+                    
+                    <p><?php echo $presidentName;?></p>
                 </div>
             </div>
     </div>

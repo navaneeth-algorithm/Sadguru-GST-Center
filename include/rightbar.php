@@ -32,7 +32,7 @@
                 <i class="fa fa-picture-o w3-xlarge" aria-hidden="true"></i><a href="headfootTemp.php?page=gallery" style="text-decoration:none"> Photo Gallery</a>
             </div>
             <div class="w3-row  w3-button w3-light-gray" style="margin-top:10px;padding-right:30px">
-                <i class="fa fa-user w3-xlarge" aria-hidden="true"></i><a href="headfootTemp.php?page=gallery" style="text-decoration:none"> Customer FeedBack </a>
+                <i class="fa fa-user w3-xlarge" aria-hidden="true"></i><a href="headfootTemp.php?page=customerFeedBack" style="text-decoration:none"> Customer FeedBack </a>
             </div>
         </div>
         <script>

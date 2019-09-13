@@ -13,6 +13,8 @@ if(mysqli_num_rows($suc))
   $imagePath = $row['Name'];
   $row = mysqli_fetch_assoc($suc);
   $downloadFolder = $row['Name'];
+  $row = mysqli_fetch_assoc($suc);
+  $reportFolder = $row['Name'];
   
 }
 ?>

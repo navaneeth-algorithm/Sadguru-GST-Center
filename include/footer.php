@@ -66,7 +66,7 @@
                                         <span class="w3-xlarge w3-margin"><i class="fa fa-facebook" aria-hidden="true"></i></span>
                                         <span class="w3-xlarge w3-margin"><i class="fa fa-twitter"  aria-hidden="true"></i></span>
                                         <span class="w3-xlarge w3-margin"><i class="fa fa-linkedin" aria-hidden="true"></i></span>
-                                        <span class="w3-xlarge w3-margin"><i class="fa fa-dribbble" aria-hidden="true"></i></span>
+                                       
                                     </div>
 
                         </div>

@@ -1,6 +1,6 @@
 <div class="w3-container">
 
-<div>
+<div class="">
     <div class="w3-col s6">
 
         <!-- Here Goes 2 Profile President and VicePresident -->
@@ -38,39 +38,57 @@
               <span class="w3-text-red w3-large" style="margin-left:34px">President</span>
 
               <!-- Here Goes DisplayCard of President -->
-                <div class="w3-card w3-light-grey w3-margin">
-                    <img src="<?php echo $imagePath."/".$presidentImage;  ?>" height="50" width="50" style="width:100%;height:100%">
+              <!--  <div class="w3-card w3-light-grey w3-margin">
+                    <img src="<?php //echo $imagePath."/".$presidentImage;  ?>" height="50" width="50" style="width:100%;height:100%">
                     <div class="w3-container w3-center">
-                        <span><?php echo $presidentName;  ?></span>
+                        <span><?php //echo $presidentName;  ?></span>
                     </div>
                     <div class="w3-container w3-center">
-                        <span><?php echo $presidentDesc;  ?></span>
+                        <span><?php //echo $presidentDesc;  ?></span>
                     </div>
-                </div>
-              
+                </div> -->
+               
+                    <div class="w3-card w3-margin">
+                        <img src="<?php echo $imagePath."/".$presidentImage;  ?>" width=200px height=200px style="width:100%">
+                        <div class="w3-container">
+                            <p><?php echo $presidentName; ?></p>
+                        </div>
+                    </div>
+                
             </div>
             
             <div class="w3-col s6">
               <span class="w3-text-red w3-large" style="margin-left:34px">Vice President</span>
               
               <!-- Here Goes DisplayCard of Vice President -->
-                <div class="w3-card w3-light-grey w3-margin">
-                    <img src="<?php echo $imagePath."/".$vicepresidentImage;  ?>" height="50" width="50" style="width:100%;height:100%">
+              <!--  <div class="w3-card w3-light-grey w3-margin">
+                    <img src="<?php //echo $imagePath."/".$vicepresidentImage;  ?>" height="50" width="50" style="width:100%;height:100%">
                     <div class="w3-container w3-center">
-                        <span><?php echo $vicepresidentName;  ?></span>
+                        <span><?php //echo $vicepresidentName;  ?></span>
                     </div>
                     <div class="w3-container w3-center">
-                        <span><?php echo $vicepresidentDesc;  ?></span>
+                        <span><?php //echo $vicepresidentDesc;  ?></span>
                     </div>
-                </div>
+                </div>  -->
+
+                
+                    <div class="w3-card w3-margin">
+                        <img src="<?php echo $imagePath."/".$vicepresidentImage;  ?>" width=200px height=200px style="width:100%">
+                        <div class="w3-container">
+                            <p><?php echo $vicepresidentName;  ?></p>
+                        </div>
+                    </div>
+                
               
             </div>
 
         </div>
-
+        
 
         <span class="w3-row w3-text-red w3-large">Directors</span>
+
         
+           
         <?php 
              include("dbconnect.php");
             $sql = "SELECT count(*) as totalDirector FROM boarddirector WHERE designation IN (3)";
@@ -80,40 +98,48 @@
 
             $sql = "SELECT * FROM boarddirector WHERE designation IN (3)";
             $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
-           
+           $noCol = 2;
             while($row = mysqli_fetch_assoc($result))
             {
-            $directorName = $row['Name'];
-            $directorDescription = $row['Description'];
+                $directorName = $row['Name'];
+                $directorDescription = $row['Description'];
+              
+                
         ?>
             
-            <span class="w3-col s4 w3-margin" >
+            
                 <!--  Here Goes Descrption of Directors -->
+     
 
-
-
-                <div class="w3-card w3-light-grey">
-                <img src="<?php echo $imagePath."/".$row['Image'];  ?>" height="50" width="50" style="width:100%;height:100%">
+            
+                <div class="w3-col s4 w3-margin">
+                    <div class="w3-card">
+                        <img src="<?php echo $imagePath."/".$row['Image'];  ?>" width=100px height=100px style="width:100%">
+                        <div class="w3-container">
+                            <p><?php echo $directorName; ?></p>
+                        </div>
+                    </div>
+                </div>
+               <!-- <div class="w3-card w3-light-grey">
+                <img src="<?php //echo $imagePath."/".$row['Image'];  ?>" height="200px" width="200px" style="width:100%;height:100%">
                 <div class="w3-container w3-center">
-                        <?php echo $directorName; ?>
+                        <?php //echo $directorName; ?>
                 </div>
                 <div class="w3-container">
-                        <?php echo $directorDescription; ?>
+                        <?php //echo $directorDescription; ?>
                 </div>
-                </div>
-
-
-
-
-            </span>
-             <?php  }?>
+                </div> -->
+             <?php  
+                
+            }?>
             
+       
     </div>
 
     <div class="w3-col s6">
 
             <div class="w3-card" style="width:50%;margin-left:150px">
-                <span class="w3-margin">Message from President</span>
+                <span class="w3-margin w3-large w3-text-red"> President Message</span>
                 <img src="<?php echo $imagePath."/".$presidentImage;  ?>" alt="Person" style="width:100%">
                 <div class="w3-container">
                     

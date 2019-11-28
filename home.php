@@ -3,7 +3,7 @@
     
   include("dbconnect.php");
   
-  $sql = "SELECT * FROM parameter";
+  $sql = "SELECT * FROM Parameter";
   $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
   
   if (mysqli_num_rows($result) > 0) {

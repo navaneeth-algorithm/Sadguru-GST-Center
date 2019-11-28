@@ -1,6 +1,6 @@
 <?php
                   include("dbConnect.php");
-                  $query="SELECT * FROM `map`";
+                  $query="SELECT * FROM `Map`";
                     $suc= mysqli_query($conn, $query) or die(mysqli_error($conn));  
                     
                   if(mysqli_num_rows($suc))
@@ -10,7 +10,7 @@
                     $latitude = $row['latitude'];
                     $longitude = $row['longitude'];
                   }
-                  $query="SELECT * FROM `parameter`";
+                  $query="SELECT * FROM `Parameter`";
                   $suc= mysqli_query($conn, $query) or die(mysqli_error($conn));  
                 if(mysqli_num_rows($suc))
                 {

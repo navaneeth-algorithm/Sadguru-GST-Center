@@ -1,9 +1,9 @@
 
 <div class="w3-row w3-center w3-margin">  
-        <span class="w3-row w3-margin w3-xlarge">Report Here</span>
+        <span class="w3-row w3-margin w3-xlarge">REPORTS</span>
         <?php
                   include("dbConnect.php");
-                  $query="SELECT * FROM `report`";
+                  $query="SELECT * FROM `Report`";
                 	$suc= mysqli_query($conn, $query) or die(mysqli_error($conn));  
                   if(mysqli_num_rows($suc))
                   {
@@ -12,9 +12,9 @@
 
              ?>
              
-        <span class="w3-button w3-light-gray w3-round">
-                <p><?php echo $row['Name']; ?></p>
-                <div id="pdf1"></div>
+        <span class="w3-card w3-light-gray w3-round w3-margin">
+                <h3><?php echo $row['Head']; ?></h3>
+                <div style="" class="w3-margin" id="<?php echo 'pdf'.$row['id']; ?>"></div>
                 <script type="text/javascript" src="include/Pdf/jsPdf/pdfobject.js"></script>
                 <script type='text/javascript'>
                 
@@ -29,7 +29,7 @@
                         fallbackLink:false,
                         navpanes: '0' }
                         };
-                        PDFObject.embed("<?php echo $reportFolder."/".$row['Path']; ?>", "#pdf1",options);
+                        PDFObject.embed("<?php echo $reportFolder."/".$row['path']; ?>", "<?php echo '#pdf'.$row['id']; ?>",options);
                 </script>
         </span>
         <?php }}?>

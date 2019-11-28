@@ -2,7 +2,7 @@
 <div class="w3-row w3-margin">
 <?php
 		include("dbConnect.php");
-		$buisnessStatasticQuery="SELECT * FROM `BuisnessStatastics`";
+		$buisnessStatasticQuery="SELECT * FROM `BusinessStatistics`";
 		$buisnessStatasticQueryResult= mysqli_query($conn, $buisnessStatasticQuery) or die(mysqli_error($conn));  
 		if(mysqli_num_rows($buisnessStatasticQueryResult))
 		{
@@ -15,7 +15,7 @@
 				$buisnessStatasticName = $buisnessStatasticRow['Name'];
 				$buisnessStatasticId= $buisnessStatasticRow['Id'];
 				$temp = array();
-				$buisnessStatasticYearQuery="SELECT * FROM `BuisnessStatasticsYear`";
+				$buisnessStatasticYearQuery="SELECT * FROM `BusinessStatisticsYear`";
 				$buisnessStatasticYearQueryResult= mysqli_query($conn, $buisnessStatasticYearQuery) or die(mysqli_error($conn));
 				if(mysqli_num_rows($buisnessStatasticYearQueryResult))
 				{
@@ -23,7 +23,7 @@
 					{
 						$buisnessStataticYearId = $buisnessStatasticYearRow['Id'];
 						$buisnessStataticYearName = $buisnessStatasticYearRow['Year'];
-						$buisnessStatasticDataQuery="SELECT * FROM `BuisnessStatasticsData` WHERE NameId=$buisnessStatasticId AND YearId=$buisnessStataticYearId";
+						$buisnessStatasticDataQuery="SELECT * FROM `BusinessStatisticsData` WHERE NameId=$buisnessStatasticId AND YearId=$buisnessStataticYearId";
 						$buisnessStatasticDataQueryResult= mysqli_query($conn, $buisnessStatasticDataQuery) or die(mysqli_error($conn));
 						if(mysqli_num_rows($buisnessStatasticDataQueryResult))
 						{

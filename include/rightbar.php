@@ -4,7 +4,7 @@
         <div class=" w3-margin w3-content w3-display-container w3-padding w3-light-gray w3-card" style="padding:10px">
         <?php
                   include("dbConnect.php");
-                  $query="SELECT * FROM `news`";
+                  $query="SELECT * FROM `News`";
                 	$suc= mysqli_query($conn, $query) or die(mysqli_error($conn));  
                   if(mysqli_num_rows($suc))
                   {

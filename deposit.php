@@ -12,7 +12,7 @@
 
     <?php
                   include("dbConnect.php");
-                  $query="SELECT * FROM `deposits`";
+                  $query="SELECT * FROM `Deposits`";
                 	$suc= mysqli_query($conn, $query) or die(mysqli_error($conn));  
                   if(mysqli_num_rows($suc))
                   {

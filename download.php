@@ -9,7 +9,7 @@
     </thead>
     <?php
                   include("dbConnect.php");
-                  $query="SELECT * FROM `download`";
+                  $query="SELECT * FROM `Download`";
                 	$suc= mysqli_query($conn, $query) or die(mysqli_error($conn));  
                   if(mysqli_num_rows($suc))
                   {
@@ -17,9 +17,9 @@
                     while($row = mysqli_fetch_assoc($suc)) {
         ?>
     <tr>
-      <td><?php echo $row['Name']; ?></td>
-      <td><?php echo $row['Description']; ?></td>
-      <td><a href="<?php echo $downloadFolder."/".$row['Path'].".pdf"  ?>"><i class='fa fa-fw fa-download'></i></a></td>
+      <td><?php echo $row['Head']; ?></td>
+      <td><?php echo $row['Content']; ?></td>
+      <td><a href="<?php echo $downloadFolder."/".$row['path'] ?>"><i class='fa fa-fw fa-download'></i></a></td>
     </tr>
     <?php
                     }}  

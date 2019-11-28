@@ -7,7 +7,7 @@
         <?php
             $designationArray = array();
             include("dbconnect.php");
-            $sql = "SELECT * FROM designation";
+            $sql = "SELECT * FROM Designation";
             $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
             if (mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_assoc($result)){
@@ -15,7 +15,7 @@
                 }
             }
            // print_r($designationArray);
-            $sql = "SELECT * FROM boarddirector WHERE designation IN (1,2)";
+            $sql = "SELECT * FROM BoardOfDirectors WHERE designation IN (1,2)";
             $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
             if (mysqli_num_rows($result) > 0) {
              // output data of each row
@@ -91,12 +91,12 @@
            
         <?php 
              include("dbconnect.php");
-            $sql = "SELECT count(*) as totalDirector FROM boarddirector WHERE designation IN (3)";
+            $sql = "SELECT count(*) as totalDirector FROM BoardOfDirectors WHERE designation IN (3)";
             $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
             $row = mysqli_fetch_assoc($result);
             $totalDirector = $row['totalDirector'];
 
-            $sql = "SELECT * FROM boarddirector WHERE designation IN (3)";
+            $sql = "SELECT * FROM BoardOfDirectors WHERE designation IN (3)";
             $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
            $noCol = 2;
             while($row = mysqli_fetch_assoc($result))

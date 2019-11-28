@@ -45,9 +45,24 @@
                         <div class="w3-col s9">
                             <!-- Here Goes Content Excludeing banner & right bar Con-->
                             <!-- Animation of title  -->
+                                <?php
+                                    $rollingText = '';
+                                include("dbconnect.php");
+                                
+                                $sql = "SELECT * FROM RollingText";
+                                $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+                                
+                                if (mysqli_num_rows($result) > 0) {
+                                    // output data of each row
+                                    while($row = mysqli_fetch_assoc($result)) {
+                                    $rollingText = $row['Content'].' '.$rollingText;
+                                }
+                            }
+                                        
+                                ?>
                             <svg viewBox="0,0,700,100">
                                 <text x="" y="50">
-                                    <a href="index.php">Welcome to Sadhguru Souharda Sahakari Limited </a>
+                                    <a href="index.php"><?php echo $rollingText;  ?> </a>
                                     <animate attributeName="x" from="400" to="-400" dur="20s" 
                                     repeatCount="indefinite">
                                 </text>

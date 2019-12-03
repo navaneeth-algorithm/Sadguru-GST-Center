@@ -44,7 +44,8 @@
                     <div class="w3-row">
                         <div class="w3-col s9">
                             <!-- Here Goes Content Excludeing banner & right bar Con-->
-                            <!-- Animation of title  -->
+                            <!-- A
+                            nimation of title  -->
                                 <?php
                                     $rollingText = '';
                                 include("dbconnect.php");

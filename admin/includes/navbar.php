@@ -33,7 +33,7 @@
             </li>
             <li class="user-footer">
               <div class="pull-left">
-                <a href="#profile" data-toggle="modal" class="btn btn-default btn-flat" id="admin_profile">Update</a>
+              <button class='btn btn-default btn-sm editprofile btn-flat' data-id=''>UPDATE</button>
               </div>
               <div class="pull-right">
                 <a href="../logout.php" class="btn btn-default btn-flat">Sign out</a>
@@ -45,4 +45,46 @@
     </div>
   </nav>
 </header>
-<?php include 'includes/profile_modal.php'; ?>
+<?php include 'profile_modal.php'; ?>
+
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="../bower_components/jquery-ui/jquery-ui.min.js"></script>
+<script>
+$(function(){
+  $(document).on('click', '.editprofile', function(e){
+    e.preventDefault();
+    $('#profile').modal('show');
+    var id = $(this).data('id');
+    //alert("Hello");
+    getProfileRow(id);
+  });
+
+  $(document).on('click', '.deleteprofile', function(e){
+    e.preventDefault();
+    $('#profile').modal('show');
+    var id = $(this).data('id');
+    getProfileRow(id);
+  });
+
+});
+
+function getProfileRow(id){
+  $.ajax({
+    type: 'POST',
+    url: 'profile_row.php',
+    data: {id:id},
+    dataType: 'json',
+    success: function(response){
+      $('.catid').val(response.id);
+      $('#edit_name').val(response.title);
+      $('#edit_gallery').val(response.path);
+     // $("#editor2").val(response.Description);
+      CKEDITOR.instances["editor1"].setData(response.Content);
+      $('.catname').html(response.title);
+    }
+  });
+}
+</script>
+</body>
+</html>

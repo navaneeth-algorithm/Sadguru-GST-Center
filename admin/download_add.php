@@ -17,7 +17,7 @@
 		if(!empty($filename)){
 				$ext = pathinfo($filename, PATHINFO_EXTENSION);
 				$new_filename = $fileName.'.'.$ext;
-				move_uploaded_file($_FILES['file']['tmp_name'], '../downloadForm/'.$new_filename);
+				move_uploaded_file($_FILES['file']['tmp_name'], '../'.$downloadFolder.'/'.$new_filename);
 				echo $fileName;	
 			}
 			else{

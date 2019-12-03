@@ -11,12 +11,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Report
+       Board of Directors
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li>Products</li>
-        <li class="active">Download</li>
+        <li class="active">Board of Director</li>
       </ol>
     </section>
 
@@ -44,6 +44,54 @@
           unset($_SESSION['success']);
         }
       ?>
+
+<div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header with-border">
+              <a href="#adddesignation" data-toggle="modal" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i> New</a>
+            </div>
+            <div class="box-body">
+              <table id="example2" class="table table-bordered">
+                <thead>
+                  <th>Designation</th>
+                  <th>Tools</th>
+                </thead>
+                <tbody>
+                  <?php
+                    $conn = $pdo->open();
+
+                    try{
+                      $stmt = $conn->prepare("SELECT * FROM Designation");
+                      $stmt->execute();
+                      foreach($stmt as $row){
+                        echo "
+                          <tr>
+                            <td>".$row['Name']."</td>
+                            <td>
+                              <button class='btn btn-success btn-sm edit1 btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
+                              <button class='btn btn-danger btn-sm delete1 btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
+                            </td>
+                          </tr>
+                        ";
+                      }
+                    }
+                    catch(PDOException $e){
+                      echo $e->getMessage();
+                    }
+
+                    $pdo->close();
+                  ?>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
@@ -53,9 +101,10 @@
             <div class="box-body">
               <table id="example1" class="table table-bordered">
                 <thead>
-                  <th>Title</th>
-                  <th>Description</th>
-		  <th>File</th>
+                  <th>Name</th>
+                  <th>Designation</th>
+		              <th>Description</th>
+	                <th>Image</th>
                   <th>Tools</th>
                 </thead>
                 <tbody>
@@ -63,14 +112,19 @@
                     $conn = $pdo->open();
 
                     try{
-                      $stmt = $conn->prepare("SELECT * FROM Download");
+                      $stmt = $conn->prepare("SELECT * FROM BoardOfDirectors");
                       $stmt->execute();
-                      foreach($stmt as $row){
+                    foreach($stmt as $row){
+		              $stmtDesignation = $conn->prepare("SELECT * FROM Designation WHERE id=:id");
+		              $stmtDesignation->execute(['id'=>$row['Designation']]);
+		              $desRow =  $stmtDesignation->fetch();
+		              $designation = $desRow['Name'];
                         echo "
                           <tr>
-                            <td>".$row['Head']."</td>
-                            <td>".$row['Content']."</td>
-			                      <td><a href=../".$downloadFolder."/".$row['path']."><i class='fa fa-fw fa-download'></i></a></td>
+                            <td>".$row['Name']."</td>
+	                    <td>".$designation."</td>
+                            <td>".$row['Description']."</td>
+			                      <td><img src='../".$directorImages."/".$row['Image']."' height=30px width=30px /></td>
                             <td>
                               <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
                               <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
@@ -95,19 +149,29 @@
      
   </div>
   	<?php include 'includes/footer.php'; ?>
-    <?php include 'includes/download_modal.php'; ?>
+    <?php include 'includes/board_modal.php'; ?>
+    <?php include 'includes/designation_modal.php'; ?>
 
 </div>
 <!-- ./wrapper -->
 
 <?php include 'includes/scripts.php'; ?>
 <script>
+
 $(function(){
+
   $(document).on('click', '.edit', function(e){
     e.preventDefault();
     $('#edit').modal('show');
     var id = $(this).data('id');
     getRow(id);
+  });
+
+  $(document).on('click', '.edit1', function(e){
+    e.preventDefault();
+    $('#designationedit').modal('show');
+    var id = $(this).data('id');
+    getRowDesignation(id);
   });
 
   $(document).on('click', '.delete', function(e){
@@ -117,21 +181,46 @@ $(function(){
     getRow(id);
   });
 
+  $(document).on('click', '.delete1', function(e){
+    e.preventDefault();
+    $('#designationdelete').modal('show');
+    var id = $(this).data('id');
+    getRowDesignation(id);
+  });
+
+
 });
 
 function getRow(id){
   $.ajax({
     type: 'POST',
-    url: 'download_row.php',
+    url: 'board_row.php',
     data: {id:id},
     dataType: 'json',
     success: function(response){
       $('.catid').val(response.id);
-      $('#edit_name').val(response.Head);
-      $('#edit_downloadfile').val(response.path);
+      $('#edit_name').val(response.Name);
+      $('#edit_downloadfile').val(response.Image);
+     // $("#editor2").val(response.Description);
+      CKEDITOR.instances["editor2"].setData(response.Description);
+      $('.catname').html(response.Name);
+      $('#edit_designation').val(response.Designation);
+    }
+  });
+}
+
+function getRowDesignation(id){
+  $.ajax({
+    type: 'POST',
+    url: 'designation_row.php',
+    data: {id:id},
+    dataType: 'json',
+    success: function(response){
+      $('.catid').val(response.id);
+      $('#designationedit_name').val(response.Name);
      // $("#editor2").val(response.Description);
       CKEDITOR.instances["editor2"].setData(response.Content);
-      $('.catname').html(response.Head);
+      $('.catname').html(response.Name);
     }
   });
 }

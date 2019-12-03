@@ -1,4 +1,4 @@
-<?php include 'includes/session.php';?>
+<?php include 'includes/session.php'; ?>
 <?php include 'includes/header.php'; ?>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -11,12 +11,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Report
+        Rolling Text
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li>Products</li>
-        <li class="active">Download</li>
+        <li class="active">Rolling Text</li>
       </ol>
     </section>
 
@@ -53,9 +53,7 @@
             <div class="box-body">
               <table id="example1" class="table table-bordered">
                 <thead>
-                  <th>Title</th>
-                  <th>Description</th>
-		  <th>File</th>
+                  <th>Rolling Text</th>
                   <th>Tools</th>
                 </thead>
                 <tbody>
@@ -63,17 +61,15 @@
                     $conn = $pdo->open();
 
                     try{
-                      $stmt = $conn->prepare("SELECT * FROM Download");
+                      $stmt = $conn->prepare("SELECT * FROM RollingText");
                       $stmt->execute();
                       foreach($stmt as $row){
                         echo "
                           <tr>
-                            <td>".$row['Head']."</td>
-                            <td>".$row['Content']."</td>
-			                      <td><a href=../".$downloadFolder."/".$row['path']."><i class='fa fa-fw fa-download'></i></a></td>
+                            <td>".$row['Content']."</a></td>
                             <td>
-                              <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
-                              <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
+                              <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['Id']."'><i class='fa fa-edit'></i> Edit</button>
+                              <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['Id']."'><i class='fa fa-trash'></i> Delete</button>
                             </td>
                           </tr>
                         ";
@@ -95,7 +91,7 @@
      
   </div>
   	<?php include 'includes/footer.php'; ?>
-    <?php include 'includes/download_modal.php'; ?>
+    <?php include 'includes/rollingtext_modal.php'; ?>
 
 </div>
 <!-- ./wrapper -->
@@ -122,15 +118,15 @@ $(function(){
 function getRow(id){
   $.ajax({
     type: 'POST',
-    url: 'download_row.php',
+    url: 'rollingtext_row.php',
     data: {id:id},
     dataType: 'json',
     success: function(response){
-      $('.catid').val(response.id);
-      $('#edit_name').val(response.Head);
-      $('#edit_downloadfile').val(response.path);
+      $('.catid').val(response.Id);
+      $('#edit_name').val(response.Content);
+     // $('#editlink').val(response.Link);
      // $("#editor2").val(response.Description);
-      CKEDITOR.instances["editor2"].setData(response.Content);
+     // CKEDITOR.instances["editor2"].setData(response.Content);
       $('.catname').html(response.Head);
     }
   });

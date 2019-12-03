@@ -13,21 +13,21 @@
                   	<label for="email" class="col-sm-3 control-label">Email</label>
 
                   	<div class="col-sm-9">
-                    	<input type="text" class="form-control" id="email" name="email" value="<?php echo $adminEmail; ?>">
+                    	<input type="text" class="form-control" id="email" name="email" value="">
                   	</div>
                 </div>
                 <div class="form-group">
                     <label for="password" class="col-sm-3 control-label">Password</label>
 
                     <div class="col-sm-9"> 
-                      <input type="password" class="form-control" id="password" name="password" value="<?php echo $adminPassword; ?>">
+                      <input type="password" class="form-control" id="password" name="password" value="">
                     </div>
                 </div>
                 <div class="form-group">
                   	<label for="firstname" class="col-sm-3 control-label">Name</label>
 
                   	<div class="col-sm-9">
-                    	<input type="text" class="form-control" id="firstname" name="firstname" value="<?php echo $adminName; ?>">
+                    	<input type="text" class="form-control" id="firstname" name="firstname" value="">
                   	</div>
                 </div>
   		<!--
@@ -48,6 +48,43 @@
                     </div>
                 </div>
           	</div>
+            <hr>
+            <h4 class="modal-title"><b>Message from President</b></h4>
+            <div class="form-group">
+                    <label for="description" class="col-sm-3 control-label">Message</label>
+
+                    <div class="col-sm-9">
+                      <textarea id="editor1" cols=40 rows=10 value="" name="description" >
+                      </textarea>
+                    </div>
+            </div>
+            <hr>
+            <h4 class="modal-title"><b>Settings</b></h4>
+            <div class="form-group">
+                    <label for="directorImages" class="col-sm-3 control-label">Director Images</label>
+
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="dirImages" name="dirImages" placeholder="Folder Name" required>
+                    </div>
+          	</div>
+
+            <div class="form-group">
+                    <label for="reportFolder" class="col-sm-3 control-label">Report Folder</label>
+
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="reportFolder" name="reportFolder" placeholder="Folder Name" required>
+                    </div>
+          	</div>
+
+            <div class="form-group">
+                    <label for="downloadFolder" class="col-sm-3 control-label">Download Folder</label>
+
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="downloadFolder" name="downloadFolder" placeholder="Folder Name" required>
+                    </div>
+          	</div>
+
+
           	<div class="modal-footer">
             	<button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
             	<button type="submit" class="btn btn-success btn-flat" name="save"><i class="fa fa-check-square-o"></i> Save</button>
@@ -56,3 +93,4 @@
         </div>
     </div>
 </div>
+

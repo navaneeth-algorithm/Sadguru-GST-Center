@@ -7,10 +7,10 @@
 		$conn = $pdo->open();
 
 		try{
-			$stmt = $conn->prepare("DELETE FROM Branch WHERE id=:id");
+			$stmt = $conn->prepare("DELETE FROM RollingText WHERE id=:id");
 			$stmt->execute(['id'=>$id]);
 
-			$_SESSION['success'] = 'Branch deleted successfully';
+			$_SESSION['success'] = 'Rolling Text deleted successfully';
 		}
 		catch(PDOException $e){
 			$_SESSION['error'] = $e->getMessage();
@@ -19,9 +19,9 @@
 		$pdo->close();
 	}
 	else{
-		$_SESSION['error'] = 'Select Branch to delete first';
+		$_SESSION['error'] = 'Select Rolling Text to delete first';
 	}
 
-	header('location: branch.php');
+	header('location: rollingtext.php');
 	
 ?>

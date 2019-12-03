@@ -11,12 +11,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Branch
+        Gallery
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li>Products</li>
-        <li class="active">Branch</li>
+        <li class="active">Gallery</li>
       </ol>
     </section>
 
@@ -54,24 +54,23 @@
               <table id="example1" class="table table-bordered">
                 <thead>
                   <th>Name</th>
-                  <th>Email</th>
-                  <th>Phone Number</th>
-	          <th>Address</th>
+                  <th>Gallery</th>
+                  <th>Download</th>
+                  <th>Tools</th>
                 </thead>
                 <tbody>
                   <?php
                     $conn = $pdo->open();
 
                     try{
-                      $stmt = $conn->prepare("SELECT * FROM Branch");
+                      $stmt = $conn->prepare("SELECT * FROM Gallery");
                       $stmt->execute();
                       foreach($stmt as $row){
                         echo "
                           <tr>
-                            <td>".$row['Name']."</td>
-                            <td>".$row['Email']."</td>
-		            <td>".$row['PhoneNumber']."</td>
-			    <td>".$row['Address']."</td>
+                            <td>".$row['title']."</td>
+                            <td><img src=../".$galleryImages."/".$row['path']." height=200px width=300px/></td>
+			                      <td><a href=../".$galleryImages."/".$row['path']."><i class='fa fa-fw fa-download'></i></a></td>
                             <td>
                               <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
                               <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
@@ -96,7 +95,7 @@
      
   </div>
   	<?php include 'includes/footer.php'; ?>
-    <?php include 'includes/branch_modal.php'; ?>
+    <?php include 'includes/gallery_modal.php'; ?>
 
 </div>
 <!-- ./wrapper -->
@@ -123,17 +122,16 @@ $(function(){
 function getRow(id){
   $.ajax({
     type: 'POST',
-    url: 'links_row.php',
+    url: 'gallery_row.php',
     data: {id:id},
     dataType: 'json',
     success: function(response){
       $('.catid').val(response.id);
-      $('#edit_name').val(response.Name);
-      $('#edit_email').val(response.Email);
-      $('#edit_phone').val(response.PhoneNumber);
+      $('#edit_name').val(response.title);
+      $('#edit_gallery').val(response.path);
      // $("#editor2").val(response.Description);
-      CKEDITOR.instances["editor2"].setData(response.Address);
-      $('.catname').html(response.Name);
+      CKEDITOR.instances["editor2"].setData(response.Content);
+      $('.catname').html(response.title);
     }
   });
 }

@@ -5,10 +5,10 @@
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title"><b>Branch</b></h4>
+              <h4 class="modal-title"><b>Add Board</b></h4>
             </div>
             <div class="modal-body">
-              <form class="form-horizontal" method="POST" action="branch_add.php">
+              <form class="form-horizontal" method="POST" action="board_add.php" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="name" class="col-sm-3 control-label">Name</label>
 
@@ -16,27 +16,45 @@
                       <input type="text" class="form-control" id="name" name="name" required>
                     </div>
                 </div>
+
+		              <div class="form-group">
+		                <label for="image" class="col-sm-1 control-label">Image Upload</label>
+                    <div class="col-sm-5">
+                      <input type="file" name="file" id="image">
+                    </div>
+		              </div>
+
                 <div class="form-group">
-                    <label for="description" class="col-sm-3 control-label">Phone Number</label>
+                    <label for="description" class="col-sm-3 control-label">Description</label>
 
                     <div class="col-sm-9">
-                      <input type="text" name="phone" />
+                      <textarea id="editor1" cols=40 rows=10 name="description" >
+                      </textarea>
                     </div>
                 </div>
-		<div class="form-group">
-                    <label for="description" class="col-sm-3 control-label">Email</label>
 
-                    <div class="col-sm-9">
-                      <input type="text" name="email" />
-                    </div>
-                </div>
-		  <div class="form-group">
-                    <label for="description" class="col-sm-3 control-label">Address</label>
+                <div class="form-group">
+                    <label>Designation: </label>
+                    <select class="form-control input-sm" name="designation" id="select_designation">
+                      <option value="0">ALL</option>
+                      <?php
+                        $conn = $pdo->open();
 
-                    <div class="col-sm-9">
-                      <textarea id="editor1" cols=40 rows=10 name="description">
-                   </div>
-                </div>
+                        $stmt = $conn->prepare("SELECT * FROM Designation");
+                        $stmt->execute();
+
+                        foreach($stmt as $crow){
+                          $selected = ($crow['id'] == $catid) ? 'selected' : ''; 
+                          echo "
+                            <option value='".$crow['id']."' ".$selected.">".$crow['Name']."</option>
+                          ";
+                        }
+
+                        $pdo->close();
+                      ?>
+                    </select>
+                  </div>
+
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
@@ -54,10 +72,10 @@
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title"><b>Edit Branch</b></h4>
+              <h4 class="modal-title"><b>Edit Board</b></h4>
             </div>
             <div class="modal-body">
-              <form class="form-horizontal" method="POST" action="branch_edit.php">
+              <form class="form-horizontal" method="POST" action="board_edit.php">
                 <input type="hidden" class="catid" name="id">
                 <div class="form-group">
                     <label for="edit_name" class="col-sm-3 control-label">Name</label>
@@ -66,28 +84,44 @@
                       <input type="text" class="form-control" id="edit_name" name="name">
                     </div>
                 </div>
-		<div class="form-group">
-                    <label for="description" class="col-sm-3 control-label">Phone Number</label>
-
-                    <div class="col-sm-9">
-                      <input type="text" id="edit_phone" name="phone" />
-                    </div>
-                </div>
-		<div class="form-group">
-                    <label for="description" class="col-sm-3 control-label">Email</label>
-
-                    <div class="col-sm-9">
-                      <input type="text" name="email" id="edit_email" />
-                    </div>
+                <div class="form-group">
+                              <label for="reportfile" class="col-sm-1 control-label">File</label>
+                              <input type=text id="edit_downloadfile" disabled />
+                              <div class="col-sm-5">
+                                <input type="file" name="file">
+                              </div>
                 </div>
                 <div class="form-group">
-                    <label for="description" class="col-sm-3 control-label">Address</label>
+                    <label for="description" class="col-sm-3 control-label">Description</label>
 
                     <div class="col-sm-9">
                       <textarea id="editor2" cols=40 rows=10 name="description">
                       </textarea>
                     </div>
                 </div>
+
+
+                <div class="form-group">
+                    <label>Designation: </label>
+                    <select class="form-control input-sm" name="designation" id="edit_designation">
+                      <option value="0">ALL</option>
+                      <?php
+                        $conn = $pdo->open();
+
+                        $stmt = $conn->prepare("SELECT * FROM Designation");
+                        $stmt->execute();
+
+                        foreach($stmt as $crow){
+                          $selected = ($crow['id'] == $catid) ? 'selected' : ''; 
+                          echo "
+                            <option value='".$crow['id']."' ".$selected.">".$crow['Name']."</option>
+                          ";
+                        }
+
+                        $pdo->close();
+                      ?>
+                    </select>
+                  </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
@@ -105,13 +139,13 @@
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title"><b>Deleting...</b></h4>
+              <h4 class="modal-title"><b>Delete Board</b></h4>
             </div>
             <div class="modal-body">
-              <form class="form-horizontal" method="POST" action="branch_delete.php">
+              <form class="form-horizontal" method="POST" action="board_delete.php">
                 <input type="hidden" class="catid" name="id">
                 <div class="text-center">
-                    <p>DELETE Branch</p>
+                    <p>DELETE Download</p>
                     <h2 class="bold catname"></h2>
                 </div>
             </div>

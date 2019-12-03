@@ -18,6 +18,26 @@
       <li hidden><a href="sales.php"><i class="fa fa-money"></i> <span>Sales</span></a></li>
       <li class="header" hidden>MANAGE</li>
       <li hidden><a href="users.php"><i class="fa fa-users"></i> <span>Users</span></a></li>
+
+
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-barcode"></i>
+          <span>Profile</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href=""><i class="fa fa-circle-o"></i>Main Profile</a></li>
+          <li><a href=""><i class="fa fa-circle-o"></i>Password</a></li>
+          <li><a href=""><i class="fa fa-circle-o"></i>President Message</a></li>
+          <li><a href="settings.php"><i class="fa fa-circle-o"></i>Settings</a></li>
+        </ul>
+      </li>
+
+
+
       <li class="treeview">
         <a href="#">
           <i class="fa fa-barcode"></i>
@@ -33,10 +53,17 @@
           <li><a href="report.php"><i class="fa fa-circle-o"></i>Report</a></li>
           <li><a href="download.php"><i class="fa fa-circle-o"></i>Downloads</a></li>
           <li><a href="noticeboard.php"><i class="fa fa-circle-o"></i>Notice Board</a></li>
-	  <li><a href="links.php"><i class="fa fa-circle-o"></i>Links</a></li>
-	  <li><a href="branch.php"><i class="fa fa-circle-o"></i>Branch</a></li>
+	        <li><a href="links.php"><i class="fa fa-circle-o"></i>Links</a></li>
+	        <li><a href="branch.php"><i class="fa fa-circle-o"></i>Branch</a></li>
+          <li><a href="rollingtext.php"><i class="fa fa-circle-o"></i>Rolling Text</a></li>
+	        <li><a href="board.php"><i class="fa fa-circle-o"></i>Board of Directors</a></li>
+          <li><a href="gallery.php"><i class="fa fa-circle-o"></i>Gallery</a></li>
         </ul>
       </li>
+
+
+
+
     </ul>
   </section>
   <!-- /.sidebar -->

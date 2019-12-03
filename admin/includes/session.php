@@ -22,16 +22,12 @@
 	$adminEmail = $row['Email'];
 	$adminPassword = $row['Password'];
 	$adminId =1;
-
-  	$row = $stmt->fetch();
-  	$imagePath = $row['Name'];
+	$imagePath = $row['Images'];
+	$galleryImages = $row['GalleryImages'];  
 	$adminPhoto = '';
-
-  	$row = $stmt->fetch();
-  	$downloadFolder = $row['Name'];
-
-  	$row = $stmt->fetch();
-  	$reportFolder = $row['Name'];
+	$downloadFolder = $row['Download'];
+	$directorImages = $row['DirectorImages'];  
+  	$reportFolder = $row['Report'];
 
 
 	$pdo->close();

@@ -7,10 +7,10 @@
 		$conn = $pdo->open();
 
 		try{
-			$stmt = $conn->prepare("DELETE FROM BusinessStatistics WHERE id=:id");
+			$stmt = $conn->prepare("DELETE FROM BusinessStatisticsYear WHERE id=:id");
 			$stmt->execute(['id'=>$id]);
 
-			$_SESSION['success'] = 'about name deleted successfully';
+			$_SESSION['success'] = 'about Year deleted successfully';
 		}
 		catch(PDOException $e){
 			$_SESSION['error'] = $e->getMessage();
@@ -19,9 +19,9 @@
 		$pdo->close();
 	}
 	else{
-		$_SESSION['error'] = 'Select about name to delete first';
+		$_SESSION['error'] = 'Select about Year to delete first';
 	}
 
-	header('location: aboutname.php');
+	header('location: aboutyear.php');
 	
 ?>

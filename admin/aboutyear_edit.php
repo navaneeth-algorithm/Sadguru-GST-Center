@@ -6,9 +6,9 @@
 		$name = $_POST['name'];
 
 		try{
-			$stmt = $conn->prepare("UPDATE BusinessStatistics SET Name=:title WHERE id=:id");
+			$stmt = $conn->prepare("UPDATE BusinessStatisticsYear SET `Year`=:title WHERE id=:id");
 			$stmt->execute(['title'=>$name,'id'=>$id]);
-			$_SESSION['success'] = 'About Name updated successfully';
+			$_SESSION['success'] = 'About Year updated successfully';
 		}
 		catch(PDOException $e){
 			$_SESSION['error'] = $e->getMessage();
@@ -17,9 +17,9 @@
 		$pdo->close();
 	}
 	else{
-		$_SESSION['error'] = 'Fill up edit About Name form first';
+		$_SESSION['error'] = 'Fill up edit About Year form first';
 	}
 
-	header('location: aboutname.php');
+	header('location: aboutyear.php');
 
 ?>

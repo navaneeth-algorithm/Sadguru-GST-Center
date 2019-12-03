@@ -6,7 +6,7 @@
 		
 		$conn = $pdo->open();
 
-		$stmt = $conn->prepare("SELECT * FROM News WHERE id=:id");
+		$stmt = $conn->prepare("SELECT * FROM businessstatistics WHERE id=:id");
 		$stmt->execute(['id'=>$id]);
 		$row = $stmt->fetch();
 		

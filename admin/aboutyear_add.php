@@ -7,9 +7,9 @@
 
 		$conn = $pdo->open();
 			try{
-				$stmt = $conn->prepare("INSERT INTO `BusinessStatistics` (`Name`) VALUES (:title)");
+				$stmt = $conn->prepare("INSERT INTO `BusinessstatisticsYear` (`Year`) VALUES (:title)");
 				$stmt->execute(['title'=>$title]);
-				$_SESSION['success'] = 'About Name added successfully';
+				$_SESSION['success'] = 'About Year added successfully';
 			}
 			catch(PDOException $e){
 				$_SESSION['error'] = $e->getMessage();
@@ -17,9 +17,9 @@
 		$pdo->close();
 	}
 	else{
-		$_SESSION['error'] = 'Fill up About Name form first';
+		$_SESSION['error'] = 'Fill up About Year form first';
 	}
 
-	header('location: aboutname.php');
+	header('location: aboutyear.php');
 
 ?>

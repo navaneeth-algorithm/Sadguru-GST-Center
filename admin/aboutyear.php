@@ -61,12 +61,12 @@
                     $conn = $pdo->open();
 
                     try{
-                      $stmt = $conn->prepare("SELECT * FROM `BusinessStatistics`");
+                      $stmt = $conn->prepare("SELECT * FROM `BusinessStatisticsYear`");
                       $stmt->execute();
                       foreach($stmt as $row){
                         echo "
                           <tr>
-                            <td>".$row['Name']."</td>
+                            <td>".$row['Year']."</td>
                             <td>
                               <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['Id']."'><i class='fa fa-edit'></i> Edit</button>
                               <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['Id']."'><i class='fa fa-trash'></i> Delete</button>
@@ -91,7 +91,7 @@
      
   </div>
   	<?php include 'includes/footer.php'; ?>
-    <?php include 'includes/aboutname_modal.php'; ?>
+    <?php include 'includes/aboutyear_modal.php'; ?>
 
 </div>
 <!-- ./wrapper -->
@@ -118,15 +118,15 @@ $(function(){
 function getRow(id){
   $.ajax({
     type: 'POST',
-    url: 'aboutname_row.php',
+    url: 'aboutyear_row.php',
     data: {id:id},
     dataType: 'json',
     success: function(response){
       $('.catid').val(response.Id);
-      $('#edit_name').val(response.Name);
+      $('#edit_name').val(response.Year);
      // $("#editor2").val(response.Description);
       //CKEDITOR.instances["editor2"].setData(response.Content);
-      $('.catname').html(response.Name);
+      $('.catname').html(response.Year);
     }
   });
 }

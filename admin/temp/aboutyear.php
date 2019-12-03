@@ -11,12 +11,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        News
+        About
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li>Products</li>
-        <li class="active">News</li>
+        <li class="active">About</li>
       </ol>
     </section>
 
@@ -53,8 +53,7 @@
             <div class="box-body">
               <table id="example1" class="table table-bordered">
                 <thead>
-                  <th>Title</th>
-                  <th>Description</th>
+                  <th>Name</th>
                   <th>Tools</th>
                 </thead>
                 <tbody>
@@ -62,16 +61,15 @@
                     $conn = $pdo->open();
 
                     try{
-                      $stmt = $conn->prepare("SELECT * FROM News");
+                      $stmt = $conn->prepare("SELECT * FROM `businessstatistics`");
                       $stmt->execute();
                       foreach($stmt as $row){
                         echo "
                           <tr>
-                            <td>".$row['Head']."</td>
-                            <td>".$row['Content']."</td>
+                            <td>".$row['Name']."</td>
                             <td>
-                              <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
-                              <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
+                              <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['Id']."'><i class='fa fa-edit'></i> Edit</button>
+                              <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['Id']."'><i class='fa fa-trash'></i> Delete</button>
                             </td>
                           </tr>
                         ";
@@ -93,7 +91,7 @@
      
   </div>
   	<?php include 'includes/footer.php'; ?>
-    <?php include 'includes/news_modal.php'; ?>
+    <?php include 'includes/aboutname_modal.php'; ?>
 
 </div>
 <!-- ./wrapper -->
@@ -120,15 +118,15 @@ $(function(){
 function getRow(id){
   $.ajax({
     type: 'POST',
-    url: 'news_row.php',
+    url: 'aboutname_row.php',
     data: {id:id},
     dataType: 'json',
     success: function(response){
-      $('.catid').val(response.id);
-      $('#edit_name').val(response.Head);
+      $('.catid').val(response.Id);
+      $('#edit_name').val(response.Name);
      // $("#editor2").val(response.Description);
-      CKEDITOR.instances["editor2"].setData(response.Content);
-      $('.catname').html(response.Head);
+      //CKEDITOR.instances["editor2"].setData(response.Content);
+      $('.catname').html(response.Name);
     }
   });
 }

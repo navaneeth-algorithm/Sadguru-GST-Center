@@ -4,10 +4,9 @@
 	if(isset($_POST['edit'])){
 		$id = $_POST['id'];
 		$name = $_POST['name'];
-		$description = $_POST['description'];
 
 		try{
-			$stmt = $conn->prepare("UPDATE News SET Head=:title, Content=:description WHERE id=:id");
+			$stmt = $conn->prepare("UPDATE businessstatistics SET Name=:title WHERE id=:id");
 			$stmt->execute(['title'=>$name,'description'=>$description, 'id'=>$id]);
 			$_SESSION['success'] = 'News updated successfully';
 		}
@@ -18,9 +17,9 @@
 		$pdo->close();
 	}
 	else{
-		$_SESSION['error'] = 'Fill up edit Loan form first';
+		$_SESSION['error'] = 'Fill up edit About Name form first';
 	}
 
-	header('location: news.php');
+	header('location: aboutname.php');
 
 ?>

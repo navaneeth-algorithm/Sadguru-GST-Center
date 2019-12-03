@@ -5,12 +5,12 @@
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title"><b>Add Name</b></h4>
+              <h4 class="modal-title"><b>Add Year</b></h4>
             </div>
             <div class="modal-body">
-              <form class="form-horizontal" method="POST" action="aboutname_add.php">
+              <form class="form-horizontal" method="POST" action="aboutyear_add.php">
                 <div class="form-group">
-                    <label for="name" class="col-sm-3 control-label">Name</label>
+                    <label for="name" class="col-sm-3 control-label">Year</label>
 
                     <div class="col-sm-9">
                       <input type="text" class="form-control" id="name" name="name" required>
@@ -33,13 +33,13 @@
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title"><b>Edit About Name</b></h4>
+              <h4 class="modal-title"><b>Edit About Year</b></h4>
             </div>
             <div class="modal-body">
-              <form class="form-horizontal" method="POST" action="aboutname_edit.php">
+              <form class="form-horizontal" method="POST" action="aboutyear_edit.php">
                 <input type="hidden" class="catid" name="id">
                 <div class="form-group">
-                    <label for="edit_name" class="col-sm-3 control-label">Name</label>
+                    <label for="edit_name" class="col-sm-3 control-label">Year</label>
 
                     <div class="col-sm-9">
                       <input type="text" class="form-control" id="edit_name" name="name">
@@ -65,10 +65,10 @@
               <h4 class="modal-title"><b>Deleting...</b></h4>
             </div>
             <div class="modal-body">
-              <form class="form-horizontal" method="POST" action="aboutname_delete.php">
+              <form class="form-horizontal" method="POST" action="aboutyear_delete.php">
                 <input type="hidden" class="catid" name="id">
                 <div class="text-center">
-                    <p>DELETE About Name</p>
+                    <p>DELETE About Year</p>
                     <h2 class="bold catname"></h2>
                 </div>
             </div>

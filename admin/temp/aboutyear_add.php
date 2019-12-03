@@ -7,7 +7,7 @@
 
 		$conn = $pdo->open();
 			try{
-				$stmt = $conn->prepare("INSERT INTO `BusinessStatistics` (`Name`) VALUES (:title)");
+				$stmt = $conn->prepare("INSERT INTO `businessstatistics` (`Name`) VALUES (:title)");
 				$stmt->execute(['title'=>$title]);
 				$_SESSION['success'] = 'About Name added successfully';
 			}

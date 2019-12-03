@@ -6,7 +6,7 @@
 		
 		$conn = $pdo->open();
 
-		$stmt = $conn->prepare("SELECT * FROM BusinessStatistics WHERE id=:id");
+		$stmt = $conn->prepare("SELECT * FROM BusinessStatisticsYear WHERE id=:id");
 		$stmt->execute(['id'=>$id]);
 		$row = $stmt->fetch();
 		

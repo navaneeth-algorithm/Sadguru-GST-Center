@@ -29,9 +29,9 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href=""><i class="fa fa-circle-o"></i>Main Profile</a></li>
-          <li><a href=""><i class="fa fa-circle-o"></i>Password</a></li>
-          <li><a href=""><i class="fa fa-circle-o"></i>President Message</a></li>
+          <li><a href="mainprofile.php"><i class="fa fa-circle-o"></i>Company Profile</a></li>
+          <li><a href="password.php"><i class="fa fa-circle-o"></i>Password</a></li>
+          <li><a href="presidentmessage.php"><i class="fa fa-circle-o"></i>President Message</a></li>
           <li><a href="settings.php"><i class="fa fa-circle-o"></i>Settings</a></li>
         </ul>
       </li>
@@ -58,6 +58,20 @@
           <li><a href="rollingtext.php"><i class="fa fa-circle-o"></i>Rolling Text</a></li>
 	        <li><a href="board.php"><i class="fa fa-circle-o"></i>Board of Directors</a></li>
           <li><a href="gallery.php"><i class="fa fa-circle-o"></i>Gallery</a></li>
+          <li class="treeview">
+        <a href="#">
+        <i class="fa fa-circle-o"></i>
+          <span>About</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="aboutname.php"><i class="fa fa-circle-o"></i>Name</a></li>
+          <li><a href="aboutyear.php"><i class="fa fa-circle-o"></i>Year</a></li>
+          <li><a href="aboutdata.php"><i class="fa fa-circle-o"></i>Data</a></li>
+        </ul>
+      </li>
         </ul>
       </li>
 

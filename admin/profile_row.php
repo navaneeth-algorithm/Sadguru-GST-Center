@@ -10,36 +10,19 @@
 		$stmt->execute();
         $row = $stmt->fetch();
         
-        $companyName = $row['CompanyName'];
-        $contactDetails = $row['PhoneNumber'];
-        $adminName = $row['Name'];
-        $adminEmail = $row['Email'];
-        $adminPassword = $row['Password'];
+        $data['CompanyName'] = $row['CompanyName'];
+        $data['PhoneNumber'] = $row['PhoneNumber'];
+        $data['Name'] = $row['Name'];
+        $data['Email'] = $row['Email'];
+        $data['Password'] = $row['Password'];
         $adminId =1;
-  
-        $row = $stmt->fetch();
-        $imagePath = $row['Name'];
+        $data['Message'] = $row['Message'];
+        $data['Images'] = $row['Images'];
+        $data['GalleryImages'] = $row['GalleryImages'];  
         $adminPhoto = '';
-  
-        $row = $stmt->fetch();
-        $downloadFolder = $row['Name'];
-  
-        $row = $stmt->fetch();
-        $reportFolder = $row['Name'];
-
-        $row = $stmt->fetch();
-        $DirectorImages = $row['Name'];
-
-        
-        $data['CompanyName'] = $companyName;
-        $data['PhoneNumber'] = $contactDetails;
-        $data['AdminName'] = $adminName;
-        $data['AdminEmail'] = $adminEmail;
-        $data['AdminPassword'] = $adminPassword;
-        $data['GalleryImage'] = $imagePath;
-        $data['DirectorImage'] = $DirectorImages;
-        $data['ReportFolder'] = $reportFolder;
-        $data['DownloadFolder'] = $downloadFolder;
+        $data['Download'] = $row['Download'];
+        $data['DirectorImages'] = $row['DirectorImages'];  
+        $data['Report'] = $row['Report'];
 
 		$pdo->close();
 

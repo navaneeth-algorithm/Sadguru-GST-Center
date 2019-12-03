@@ -60,7 +60,7 @@
                           <label for="name" class="col-sm-3 control-label">Images Name</label>
 
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" id="Imagesname" value="<?php echo $imagePath; ?>" name="name" placeholder="Image Folder" required>
+                            <input type="text" class="form-control" id="Imagesname" value="<?php echo $imagePath; ?>" name="Imagesname" placeholder="Image Folder" required>
                           </div>
                       </div>
                   </div>
@@ -75,7 +75,7 @@
                           <label for="name" class="col-sm-3 control-label">Gallery Image</label>
 
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" id="Galleryname" name="name" value="<?php echo $galleryImages; ?>" placeholder="Gallery Images Folder" required>
+                            <input type="text" class="form-control" id="Galleryname" name="Galleryname" value="<?php echo $galleryImages; ?>" placeholder="Gallery Images Folder" required>
                           </div>
                       </div>
                   </div>
@@ -90,7 +90,7 @@
                           <label for="name" class="col-sm-3 control-label">Director Image</label>
 
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" id="Directorname" name="name" value="<?php echo $directorImages; ?>" placeholder="Gallery Images Folder" required>
+                            <input type="text" class="form-control" id="Directorname" name="Directorname" value="<?php echo $directorImages; ?>" placeholder="Gallery Images Folder" required>
                           </div>
                       </div>
                   </div>
@@ -105,7 +105,7 @@
                           <label for="name" class="col-sm-3 control-label">Report</label>
 
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" id="Reportname" name="name" value="<?php echo $reportFolder; ?>" placeholder="Report Folder" required>
+                            <input type="text" class="form-control" id="Reportname" name="Reportname" value="<?php echo $reportFolder; ?>" placeholder="Report Folder" required>
                           </div>
                       </div>
                   </div>
@@ -120,7 +120,7 @@
                           <label for="name" class="col-sm-3 control-label">Download</label>
 
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" id="Downloadname" name="name" value="<?php echo $downloadFolder; ?>" placeholder="Download Folder" required>
+                            <input type="text" class="form-control" id="Downloadname" name="Downloadname" value="<?php echo $downloadFolder; ?>" placeholder="Download Folder" required>
                           </div>
                       </div>
                   </div>
@@ -129,7 +129,7 @@
 
 
               <div class="modal-footer">
-              <button type="submit" class="btn btn-default btn-flat" name="add"><i class="fa fa-save"></i> UPDATE</button>
+              <button type="submit" class="btn btn-default btn-flat" name="update"><i class="fa fa-save"></i> UPDATE</button>
               </div>
 
         </form>

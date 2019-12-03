@@ -7,10 +7,10 @@
 		$conn = $pdo->open();
 
 		try{
-			$stmt = $conn->prepare("DELETE FROM Designation WHERE id=:id");
+			$stmt = $conn->prepare("DELETE FROM News WHERE id=:id");
 			$stmt->execute(['id'=>$id]);
 
-			$_SESSION['success'] = 'Designation deleted successfully';
+			$_SESSION['success'] = 'news deleted successfully';
 		}
 		catch(PDOException $e){
 			$_SESSION['error'] = $e->getMessage();
@@ -19,9 +19,9 @@
 		$pdo->close();
 	}
 	else{
-		$_SESSION['error'] = 'Select Designation to delete first';
+		$_SESSION['error'] = 'Select news to delete first';
 	}
 
-	header('location: board.php');
+	header('location: news.php');
 	
 ?>

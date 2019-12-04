@@ -1,6 +1,6 @@
 /*
 SQLyog Community v13.1.4  (64 bit)
-MySQL - 10.4.8-MariaDB : Database - Society
+MySQL - 10.4.8-MariaDB : Database - society
 *********************************************************************
 */
 
@@ -12,9 +12,9 @@ MySQL - 10.4.8-MariaDB : Database - Society
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`Society` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`society` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
 
-USE `Society`;
+USE `society`;
 
 /*Table structure for table `about` */
 
@@ -69,12 +69,12 @@ CREATE TABLE `boardofdirectors` (
   PRIMARY KEY (`id`),
   KEY `LaguageId` (`LanguageId`),
   CONSTRAINT `LaguageId` FOREIGN KEY (`LanguageId`) REFERENCES `laguage` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 /*Data for the table `boardofdirectors` */
 
 insert  into `boardofdirectors`(`id`,`Name`,`Designation`,`Description`,`Image`,`LanguageId`) values 
-(1,'Dr.B.N.Shanthapriya',1,NULL,'President PHOTO.jpg',1),
+(1,'Dr.B.N.Shanthapriya',1,NULL,'PresidentPHOTO.jpg',1),
 (2,'J.Ragupathi Tantri ',2,NULL,'vICEPRSIDENT.jpg',1),
 (3,'Prasanna Bhat',3,NULL,'prasannabhat .jpg',1),
 (4,'U.L.Bhat',3,NULL,'ulbHAT.jpg',1),
@@ -96,27 +96,23 @@ CREATE TABLE `branch` (
   `PhoneNumber` varchar(255) DEFAULT NULL,
   `EmailId` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `branch` */
 
-insert  into `branch`(`Id`,`Name`,`Address`,`PhoneNumber`,`EmailId`) values 
-(1,'Navaneeth','Udupi','9239323','nava@gmail.com'),
-(2,'Navaneeth','Udupi','9239323','nava@gmail.com');
+/*Table structure for table `businessstatistics` */
 
-/*Table structure for table `buisnessstatastics` */
+DROP TABLE IF EXISTS `businessstatistics`;
 
-DROP TABLE IF EXISTS `buisnessstatastics`;
-
-CREATE TABLE `buisnessstatastics` (
+CREATE TABLE `businessstatistics` (
   `Id` int(255) NOT NULL AUTO_INCREMENT,
   `Name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
-/*Data for the table `buisnessstatastics` */
+/*Data for the table `businessstatistics` */
 
-insert  into `buisnessstatastics`(`Id`,`Name`) values 
+insert  into `businessstatistics`(`Id`,`Name`) values 
 (1,'MemberShip'),
 (2,'ShareCapital'),
 (3,'Deposits'),
@@ -125,11 +121,11 @@ insert  into `buisnessstatastics`(`Id`,`Name`) values
 (6,'Profit'),
 (7,'Dividend');
 
-/*Table structure for table `buisnessstatasticsdata` */
+/*Table structure for table `businessstatisticsdata` */
 
-DROP TABLE IF EXISTS `buisnessstatasticsdata`;
+DROP TABLE IF EXISTS `businessstatisticsdata`;
 
-CREATE TABLE `buisnessstatasticsdata` (
+CREATE TABLE `businessstatisticsdata` (
   `Id` int(255) NOT NULL AUTO_INCREMENT,
   `NameId` int(255) DEFAULT NULL,
   `YearId` int(255) DEFAULT NULL,
@@ -137,13 +133,13 @@ CREATE TABLE `buisnessstatasticsdata` (
   PRIMARY KEY (`Id`),
   KEY `FKBSNameId` (`NameId`),
   KEY `FKBSYearId` (`YearId`),
-  CONSTRAINT `FKBSNameId` FOREIGN KEY (`NameId`) REFERENCES `buisnessstatastics` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `FKBSYearId` FOREIGN KEY (`YearId`) REFERENCES `buisnessstatasticsyear` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `FKBSNameId` FOREIGN KEY (`NameId`) REFERENCES `businessstatistics` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FKBSYearId` FOREIGN KEY (`YearId`) REFERENCES `businessstatisticsyear` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
 
-/*Data for the table `buisnessstatasticsdata` */
+/*Data for the table `businessstatisticsdata` */
 
-insert  into `buisnessstatasticsdata`(`Id`,`NameId`,`YearId`,`Data`) values 
+insert  into `businessstatisticsdata`(`Id`,`NameId`,`YearId`,`Data`) values 
 (1,1,1,2016456),
 (2,1,2,1985801),
 (3,1,3,1755904),
@@ -180,19 +176,19 @@ insert  into `buisnessstatasticsdata`(`Id`,`NameId`,`YearId`,`Data`) values
 (34,7,4,122),
 (35,7,5,645);
 
-/*Table structure for table `buisnessstatasticsyear` */
+/*Table structure for table `businessstatisticsyear` */
 
-DROP TABLE IF EXISTS `buisnessstatasticsyear`;
+DROP TABLE IF EXISTS `businessstatisticsyear`;
 
-CREATE TABLE `buisnessstatasticsyear` (
+CREATE TABLE `businessstatisticsyear` (
   `Id` int(255) NOT NULL AUTO_INCREMENT,
   `Year` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
-/*Data for the table `buisnessstatasticsyear` */
+/*Data for the table `businessstatisticsyear` */
 
-insert  into `buisnessstatasticsyear`(`Id`,`Year`) values 
+insert  into `businessstatisticsyear`(`Id`,`Year`) values 
 (1,'2015'),
 (2,'2016'),
 (3,'2017'),
@@ -236,7 +232,7 @@ CREATE TABLE `designation` (
   PRIMARY KEY (`id`),
   KEY `desgid` (`LaguageId`),
   CONSTRAINT `desgid` FOREIGN KEY (`LaguageId`) REFERENCES `laguage` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 /*Data for the table `designation` */
 
@@ -275,7 +271,7 @@ CREATE TABLE `gallery` (
   PRIMARY KEY (`id`),
   KEY `LanguageId` (`LanguageId`),
   CONSTRAINT `gallery_ibfk_1` FOREIGN KEY (`LanguageId`) REFERENCES `laguage` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
 
 /*Data for the table `gallery` */
 
@@ -325,7 +321,7 @@ CREATE TABLE `home` (
 /*Data for the table `home` */
 
 insert  into `home`(`id`,`LanguageId`,`Head`,`Content`) values 
-(1,1,'Area of Operation','Our Area of operation is Udupi district except Madur Village of Kundapura Taluk . From PRESIDENT DESK We are very proud to say Sadhguu Souharda Sahakari Ltd is a Co-operative Institute born with Ethics , Principles and human Values. We provides financial services like, members Savings Account , current accounts, Deposits and loans like other societies , but sahakari activities are not limited to financial matter and extended to trading and health care services. We pride ourselves on our member participation,Co-operation,service and satisfaction; We are always working to reach our members with best services.We are committed to leading the way on ethical, environmental and community members welfare issues. Our Sahakari has a unique ethical policy setting out the way we do business which we\'ve developed in full consultation with our members. Our Sahakari website contains more details about our services, our purpose, our objectives and services. You can also find more detail about our health and medical care service busssines through our PMJK Centres. Dr.B.N.Shanthapriya President');
+(1,1,'Area of Operation','Our Area of operation is Udupi district except Madur Village of Kundapura Taluk . ');
 
 /*Table structure for table `laguage` */
 
@@ -353,7 +349,7 @@ CREATE TABLE `links` (
   `Content` text DEFAULT NULL,
   `Link` text DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `links` */
 
@@ -440,7 +436,12 @@ CREATE TABLE `parameter` (
   `Email` varchar(255) NOT NULL,
   `Password` varchar(255) DEFAULT NULL,
   `PhoneNumber` bigint(20) NOT NULL,
-  `Address` text NOT NULL,
+  `Address1` text NOT NULL,
+  `Address2` text DEFAULT NULL,
+  `Address3` text DEFAULT NULL,
+  `City` varchar(255) DEFAULT NULL,
+  `Pincode` varchar(255) DEFAULT NULL,
+  `State` varchar(255) DEFAULT NULL,
   `Languageid` bigint(20) DEFAULT NULL,
   `RegisteredNumber` bigint(20) DEFAULT NULL,
   `WorkingHours` varchar(255) DEFAULT NULL,
@@ -451,18 +452,20 @@ CREATE TABLE `parameter` (
   `DateOfRegistration` varchar(255) DEFAULT NULL,
   `DomainName` varchar(255) DEFAULT NULL,
   `Message` text DEFAULT NULL,
+  `Images` varchar(255) DEFAULT NULL,
+  `GalleryImages` varchar(255) DEFAULT NULL,
+  `DirectorImages` varchar(255) DEFAULT NULL,
+  `Report` varchar(255) DEFAULT NULL,
+  `Download` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `LaugageId` (`Languageid`),
   CONSTRAINT `LaugageId` FOREIGN KEY (`Languageid`) REFERENCES `laguage` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 /*Data for the table `parameter` */
 
-insert  into `parameter`(`id`,`CompanyName`,`Name`,`Email`,`Password`,`PhoneNumber`,`Address`,`Languageid`,`RegisteredNumber`,`WorkingHours`,`WeeklyHoliday`,`EstablishedIn`,`LandLine`,`Type`,`DateOfRegistration`,`DomainName`,`Message`) values 
-(1,'Sadhguru Souharda Sahakari Limited','Dr B N Shanthapriya','sadhguruudupi@gmail.com','dca55138fe3fae8fdeff71a4991871ef70ccf7d1',9448327884,'Sadhguru Skill Devlopment Centre, Kinnimulki, Udupi \r\n576101',1,4141,'9.30 AM TO 5:30 PM','SUNDAY',2016,'0820 -2530009','Multipurpose Co-operative Society',NULL,'Sadhguruskilldevelopment.com',NULL),
-(2,NULL,'images','',NULL,0,'',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(3,NULL,'downloadForm','',NULL,0,'',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(4,NULL,'report','',NULL,0,'',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+insert  into `parameter`(`id`,`CompanyName`,`Name`,`Email`,`Password`,`PhoneNumber`,`Address1`,`Address2`,`Address3`,`City`,`Pincode`,`State`,`Languageid`,`RegisteredNumber`,`WorkingHours`,`WeeklyHoliday`,`EstablishedIn`,`LandLine`,`Type`,`DateOfRegistration`,`DomainName`,`Message`,`Images`,`GalleryImages`,`DirectorImages`,`Report`,`Download`) values 
+(1,'Sadhguru Souharda Sahakari Limited','Dr B N Shanthapriya','sadhguruudupi@gmail.com','d033e22ae348aeb5660fc2140aec35850c4da997',9448327884,'Sadhguru Skill Devlopment Centre',' Kinnimulki Udupi ',' Kinnimulki Udupi','Udupi','574118','Karnataka',1,4141,'9.30 AM TO 5:30 PM','SUNDAY',2016,'0820 -2530009','Multipurpose Co-operative Society','2/02/2019','Sadhguruskilldevelopment.com','<p><strong>From</strong> PRESIDENT DESK We are very proud to say Sadhguu Souharda Sahakari Ltd is a Co-operative Institute born with Ethics , Principles and human Values. We provides financial services like, members Savings Account , current accounts, Deposits and loans like other societies , but sahakari activities are not limited to financial matter and extended to trading and health care services. We pride ourselves on our member participation,Co-operation,service and satisfaction; We are always working to reach our members with best services.We are committed to leading the way on ethical, environmental and community members welfare issues. Our Sahakari has a unique ethical policy setting out the way we do business which we&#39;ve developed in full consultation with our members. Our Sahakari website contains more details about our services, our purpose, our objectives and services. You can also find more detail about our health and medical care service busssines through our PMJK Centres. Dr.B.N.Shanthapriya President</p>\r\n','Images','GalleryImages','DirectorsImages','Report','DownloadForm');
 
 /*Table structure for table `report` */
 
@@ -490,13 +493,12 @@ CREATE TABLE `rollingtext` (
   `Id` int(255) NOT NULL AUTO_INCREMENT,
   `Content` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `rollingtext` */
 
 insert  into `rollingtext`(`Id`,`Content`) values 
-(2,'Good Morning'),
-(3,'Good Evening');
+(2,'Good Services');
 
 /*Table structure for table `services` */
 

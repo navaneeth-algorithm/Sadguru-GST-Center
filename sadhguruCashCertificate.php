@@ -8,7 +8,7 @@
                 <div id='installmentCalculator' class="w3-panel w3-container w3-padding  w3-light-gray w3-text-dark-gray w3-center">
                     <h4 class="w3-center">Sadhguru Cash Certificate Calculator</h4>
                     <div class="w3-row w3-margin">
-                        <input class="w3-input w3-border" id="principal" type="text" placeholder="Investment">
+                        <input class="w3-input w3-border" id="principalsadhgurucash" type="text" placeholder="Investment">
                     </div>
 
 
@@ -55,7 +55,7 @@ if (wwOpenInstalled || parent.wwOpenInstalled) {
 function sadhguruCashCertificategetValues()
 {
 	//button click gets values from inputs
-	var balance = parseFloat(document.getElementById("principal").value);
+	var balance = parseFloat(document.getElementById("principalsadhgurucash").value);
 	var interestRate =11;
 	var terms = 74;
 	

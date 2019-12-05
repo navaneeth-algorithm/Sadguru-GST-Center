@@ -12,15 +12,15 @@ MySQL - 10.4.8-MariaDB : Database - society
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`society` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`Society` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
 
-USE `society`;
+USE `Society`;
 
 /*Table structure for table `about` */
 
 DROP TABLE IF EXISTS `about`;
 
-CREATE TABLE `about` (
+CREATE TABLE `About` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `Title` varchar(255) NOT NULL,
   `Content` text NOT NULL,
@@ -32,7 +32,7 @@ CREATE TABLE `about` (
 
 /*Data for the table `about` */
 
-insert  into `about`(`id`,`Title`,`Content`,`LanguageId`) values 
+insert  into `About`(`id`,`Title`,`Content`,`LanguageId`) values 
 (1,'About','Sadhguru Souharda Sahakari Ltd is multipurpose Co-operative Society established in the year 2016 by a group of dynamic like-minded educated people from Udupi, coastal district of Karnatka., who have concern about our Socio-Economical Development of the society. The main objective of the society is Socio-Economical goals with national interest. The Sadhguru Souharda Sahakari Ltd is registered under Karnakata Souharda Co-operative Act 1997, 2015.RegNo 4141. The Society Would Like To Address The Needs Of The Middle Income Community. The society is aiming towards to provide multiple services apart from financials support to the community. It has wide range of Service programs in the field of Health Care, Medical Services, Education, Social Responsibility projects and other communities upbringing projects etc. The society is working on the principle of Ehics, honesty, sincerity and dedication with long term vision and wide range of aims and objectives.',1),
 (2,'Vision','Under Progress ',1),
 (3,'Mission','To create the values for all its member Customers, employees & society at large. ',1),
@@ -40,9 +40,9 @@ insert  into `about`(`id`,`Title`,`Content`,`LanguageId`) values
 
 /*Table structure for table `banner` */
 
-DROP TABLE IF EXISTS `banner`;
+DROP TABLE IF EXISTS `Banner`;
 
-CREATE TABLE `banner` (
+CREATE TABLE `Banner` (
   `id` int(11) NOT NULL,
   `path` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -50,16 +50,16 @@ CREATE TABLE `banner` (
 
 /*Data for the table `banner` */
 
-insert  into `banner`(`id`,`path`) values 
+insert  into `Banner`(`id`,`path`) values 
 (1,'1437241669644.jpg'),
 (2,'DSC_1592%20-%20Copy.JPG'),
 (3,'DSC_7958.JPG');
 
 /*Table structure for table `boardofdirectors` */
 
-DROP TABLE IF EXISTS `boardofdirectors`;
+DROP TABLE IF EXISTS `BoardOfDirectors`;
 
-CREATE TABLE `boardofdirectors` (
+CREATE TABLE `BoardOfDirectors` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(255) NOT NULL,
   `Designation` int(255) NOT NULL,
@@ -73,7 +73,7 @@ CREATE TABLE `boardofdirectors` (
 
 /*Data for the table `boardofdirectors` */
 
-insert  into `boardofdirectors`(`id`,`Name`,`Designation`,`Description`,`Image`,`LanguageId`) values 
+insert  into `BoardOfDirectors`(`id`,`Name`,`Designation`,`Description`,`Image`,`LanguageId`) values 
 (1,'Dr.B.N.Shanthapriya',1,NULL,'PresidentPHOTO.jpg',1),
 (2,'J.Ragupathi Tantri ',2,NULL,'vICEPRSIDENT.jpg',1),
 (3,'Prasanna Bhat',3,NULL,'prasannabhat .jpg',1),
@@ -87,9 +87,9 @@ insert  into `boardofdirectors`(`id`,`Name`,`Designation`,`Description`,`Image`,
 
 /*Table structure for table `branch` */
 
-DROP TABLE IF EXISTS `branch`;
+DROP TABLE IF EXISTS `Branch`;
 
-CREATE TABLE `branch` (
+CREATE TABLE `Branch` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(255) DEFAULT NULL,
   `Address` varchar(255) DEFAULT NULL,
@@ -102,9 +102,9 @@ CREATE TABLE `branch` (
 
 /*Table structure for table `businessstatistics` */
 
-DROP TABLE IF EXISTS `businessstatistics`;
+DROP TABLE IF EXISTS `BusinessStatistics`;
 
-CREATE TABLE `businessstatistics` (
+CREATE TABLE `BusinessStatistics` (
   `Id` int(255) NOT NULL AUTO_INCREMENT,
   `Name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`Id`)
@@ -112,7 +112,7 @@ CREATE TABLE `businessstatistics` (
 
 /*Data for the table `businessstatistics` */
 
-insert  into `businessstatistics`(`Id`,`Name`) values 
+insert  into `BusinessStatistics`(`Id`,`Name`) values 
 (1,'MemberShip'),
 (2,'ShareCapital'),
 (3,'Deposits'),
@@ -123,9 +123,9 @@ insert  into `businessstatistics`(`Id`,`Name`) values
 
 /*Table structure for table `businessstatisticsdata` */
 
-DROP TABLE IF EXISTS `businessstatisticsdata`;
+DROP TABLE IF EXISTS `BusinessStatisticsData`;
 
-CREATE TABLE `businessstatisticsdata` (
+CREATE TABLE `BusinessStatisticsData` (
   `Id` int(255) NOT NULL AUTO_INCREMENT,
   `NameId` int(255) DEFAULT NULL,
   `YearId` int(255) DEFAULT NULL,
@@ -136,10 +136,9 @@ CREATE TABLE `businessstatisticsdata` (
   CONSTRAINT `FKBSNameId` FOREIGN KEY (`NameId`) REFERENCES `businessstatistics` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FKBSYearId` FOREIGN KEY (`YearId`) REFERENCES `businessstatisticsyear` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
-
 /*Data for the table `businessstatisticsdata` */
 
-insert  into `businessstatisticsdata`(`Id`,`NameId`,`YearId`,`Data`) values 
+insert  into `BusinessStatisticsData`(`Id`,`NameId`,`YearId`,`Data`) values 
 (1,1,1,2016456),
 (2,1,2,1985801),
 (3,1,3,1755904),
@@ -178,9 +177,9 @@ insert  into `businessstatisticsdata`(`Id`,`NameId`,`YearId`,`Data`) values
 
 /*Table structure for table `businessstatisticsyear` */
 
-DROP TABLE IF EXISTS `businessstatisticsyear`;
+DROP TABLE IF EXISTS `BusinessStatisticsYear`;
 
-CREATE TABLE `businessstatisticsyear` (
+CREATE TABLE `BusinessStatisticsYear` (
   `Id` int(255) NOT NULL AUTO_INCREMENT,
   `Year` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`Id`)
@@ -188,7 +187,7 @@ CREATE TABLE `businessstatisticsyear` (
 
 /*Data for the table `businessstatisticsyear` */
 
-insert  into `businessstatisticsyear`(`Id`,`Year`) values 
+insert  into `BusinessStatisticsYear`(`Id`,`Year`) values 
 (1,'2015'),
 (2,'2016'),
 (3,'2017'),
@@ -197,9 +196,9 @@ insert  into `businessstatisticsyear`(`Id`,`Year`) values
 
 /*Table structure for table `deposits` */
 
-DROP TABLE IF EXISTS `deposits`;
+DROP TABLE IF EXISTS `Deposits`;
 
-CREATE TABLE `deposits` (
+CREATE TABLE `Deposits` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `Title` text NOT NULL,
   `Description` text NOT NULL,
@@ -213,7 +212,7 @@ CREATE TABLE `deposits` (
 
 /*Data for the table `deposits` */
 
-insert  into `deposits`(`id`,`Title`,`Description`,`LaguageId`,`shortName`,`shortNameContent`) values 
+insert  into `Deposits`(`id`,`Title`,`Description`,`LaguageId`,`shortName`,`shortNameContent`) values 
 (1,'Samucchaya -Recurring Deposit Scheme[RD]','Recurring Deposit Scheme is unique scheme, Suitable to those who are having regular monthly income. Under this scheme the account holder have to regularly deposit fixed sum of money by way of monthly instalments over a period stipulated period. ',1,'recurringDeposits','recurringDepositsContent'),
 (2,'FD','11% ',1,'fixedDeposits','fixedDepositsContent'),
 (3,'Monthly','2,000.00 ',1,'monthlyIncomeScheme','monthlyIncomeSchemeContent'),
@@ -223,9 +222,9 @@ insert  into `deposits`(`id`,`Title`,`Description`,`LaguageId`,`shortName`,`shor
 
 /*Table structure for table `designation` */
 
-DROP TABLE IF EXISTS `designation`;
+DROP TABLE IF EXISTS `Designation`;
 
-CREATE TABLE `designation` (
+CREATE TABLE `Designation` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(255) CHARACTER SET latin1 NOT NULL,
   `LaguageId` bigint(20) DEFAULT NULL,
@@ -236,16 +235,16 @@ CREATE TABLE `designation` (
 
 /*Data for the table `designation` */
 
-insert  into `designation`(`id`,`Name`,`LaguageId`) values 
+insert  into `Designation`(`id`,`Name`,`LaguageId`) values 
 (1,'President',1),
 (2,'Vice President',1),
 (3,'Directors',1);
 
 /*Table structure for table `download` */
 
-DROP TABLE IF EXISTS `download`;
+DROP TABLE IF EXISTS `Download`;
 
-CREATE TABLE `download` (
+CREATE TABLE `Download` (
   `id` int(255) NOT NULL AUTO_INCREMENT,
   `Head` varchar(255) DEFAULT NULL,
   `path` varchar(255) DEFAULT NULL,
@@ -255,7 +254,7 @@ CREATE TABLE `download` (
 
 /*Data for the table `download` */
 
-insert  into `download`(`id`,`Head`,`path`,`Content`) values 
+insert  into `Download`(`id`,`Head`,`path`,`Content`) values 
 (4,'Excel File','.xlsx','<p>File Uploaded Excel</p>\r\n'),
 (5,'sdfsdsdf','4.jpg','<p>JPeg File</p>\r\n');
 
@@ -263,7 +262,7 @@ insert  into `download`(`id`,`Head`,`path`,`Content`) values
 
 DROP TABLE IF EXISTS `gallery`;
 
-CREATE TABLE `gallery` (
+CREATE TABLE `Gallery` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `path` varchar(255) NOT NULL,
@@ -275,7 +274,7 @@ CREATE TABLE `gallery` (
 
 /*Data for the table `gallery` */
 
-insert  into `gallery`(`id`,`title`,`path`,`LanguageId`) values 
+insert  into `Gallery`(`id`,`title`,`path`,`LanguageId`) values 
 (1,'','1.jpg',1),
 (2,'','2.jpg',1),
 (3,'','3.jpg',1),
@@ -306,9 +305,9 @@ insert  into `gallery`(`id`,`title`,`path`,`LanguageId`) values
 
 /*Table structure for table `home` */
 
-DROP TABLE IF EXISTS `home`;
+DROP TABLE IF EXISTS `Home`;
 
-CREATE TABLE `home` (
+CREATE TABLE `Home` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `LanguageId` bigint(20) DEFAULT NULL,
   `Head` varchar(2000) DEFAULT NULL,
@@ -320,7 +319,7 @@ CREATE TABLE `home` (
 
 /*Data for the table `home` */
 
-insert  into `home`(`id`,`LanguageId`,`Head`,`Content`) values 
+insert  into `Home`(`id`,`LanguageId`,`Head`,`Content`) values 
 (1,1,'Area of Operation','Our Area of operation is Udupi district except Madur Village of Kundapura Taluk . ');
 
 /*Table structure for table `laguage` */
@@ -341,9 +340,9 @@ insert  into `laguage`(`id`,`Code`,`Language`) values
 
 /*Table structure for table `links` */
 
-DROP TABLE IF EXISTS `links`;
+DROP TABLE IF EXISTS `Links`;
 
-CREATE TABLE `links` (
+CREATE TABLE `Links` (
   `id` int(255) NOT NULL AUTO_INCREMENT,
   `Head` text DEFAULT NULL,
   `Content` text DEFAULT NULL,
@@ -355,9 +354,9 @@ CREATE TABLE `links` (
 
 /*Table structure for table `loan` */
 
-DROP TABLE IF EXISTS `loan`;
+DROP TABLE IF EXISTS `Loan`;
 
-CREATE TABLE `loan` (
+CREATE TABLE `Loan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `Title` text CHARACTER SET latin1 NOT NULL,
   `Description` text CHARACTER SET latin1 NOT NULL,
@@ -369,7 +368,7 @@ CREATE TABLE `loan` (
 
 /*Data for the table `loan` */
 
-insert  into `loan`(`id`,`Title`,`Description`,`LanguageId`) values 
+insert  into `Loan`(`id`,`Title`,`Description`,`LanguageId`) values 
 (1,'Monthly Installment Scheme','<p>dsa</p>\r\n',1),
 (2,'Personal Loan','<p>Loan for Personal</p>\r\n',NULL),
 (3,'Pigmy based Personal loan','<p>rfrfrfr</p>\r\n',NULL),
@@ -379,9 +378,9 @@ insert  into `loan`(`id`,`Title`,`Description`,`LanguageId`) values
 
 /*Table structure for table `map` */
 
-DROP TABLE IF EXISTS `map`;
+DROP TABLE IF EXISTS `Map`;
 
-CREATE TABLE `map` (
+CREATE TABLE `Map` (
   `id` int(11) NOT NULL,
   `location` varchar(255) DEFAULT NULL,
   `latitude` varchar(255) DEFAULT NULL,
@@ -391,14 +390,14 @@ CREATE TABLE `map` (
 
 /*Data for the table `map` */
 
-insert  into `map`(`id`,`location`,`latitude`,`longitude`) values 
+insert  into `Map`(`id`,`location`,`latitude`,`longitude`) values 
 (1,'Sadhguru','13.327147999413995','74.7416275291908');
 
 /*Table structure for table `news` */
 
-DROP TABLE IF EXISTS `news`;
+DROP TABLE IF EXISTS `News`;
 
-CREATE TABLE `news` (
+CREATE TABLE `News` (
   `id` bigint(255) NOT NULL,
   `Head` varchar(255) DEFAULT NULL,
   `Content` text DEFAULT NULL,
@@ -407,16 +406,16 @@ CREATE TABLE `news` (
 
 /*Data for the table `news` */
 
-insert  into `news`(`id`,`Head`,`Content`) values 
+insert  into `News`(`id`,`Head`,`Content`) values 
 (1,'Linkindn','Coming Soon'),
 (3,'GOOGLE PLUS','Coming Soon'),
 (4,'TWITTER','<p>Coming Soon Twitter</p>\r\n');
 
 /*Table structure for table `noticeboard` */
 
-DROP TABLE IF EXISTS `noticeboard`;
+DROP TABLE IF EXISTS `NoticeBoard`;
 
-CREATE TABLE `noticeboard` (
+CREATE TABLE `NoticeBoard` (
   `id` int(255) NOT NULL AUTO_INCREMENT,
   `Head` varchar(255) DEFAULT NULL,
   `Content` varchar(255) DEFAULT NULL,
@@ -427,9 +426,9 @@ CREATE TABLE `noticeboard` (
 
 /*Table structure for table `parameter` */
 
-DROP TABLE IF EXISTS `parameter`;
+DROP TABLE IF EXISTS `Parameter`;
 
-CREATE TABLE `parameter` (
+CREATE TABLE `Parameter` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `CompanyName` varchar(255) DEFAULT NULL,
   `Name` varchar(255) NOT NULL,
@@ -464,14 +463,14 @@ CREATE TABLE `parameter` (
 
 /*Data for the table `parameter` */
 
-insert  into `parameter`(`id`,`CompanyName`,`Name`,`Email`,`Password`,`PhoneNumber`,`Address1`,`Address2`,`Address3`,`City`,`Pincode`,`State`,`Languageid`,`RegisteredNumber`,`WorkingHours`,`WeeklyHoliday`,`EstablishedIn`,`LandLine`,`Type`,`DateOfRegistration`,`DomainName`,`Message`,`Images`,`GalleryImages`,`DirectorImages`,`Report`,`Download`) values 
+insert  into `Parameter`(`id`,`CompanyName`,`Name`,`Email`,`Password`,`PhoneNumber`,`Address1`,`Address2`,`Address3`,`City`,`Pincode`,`State`,`Languageid`,`RegisteredNumber`,`WorkingHours`,`WeeklyHoliday`,`EstablishedIn`,`LandLine`,`Type`,`DateOfRegistration`,`DomainName`,`Message`,`Images`,`GalleryImages`,`DirectorImages`,`Report`,`Download`) values 
 (1,'Sadhguru Souharda Sahakari Limited','Dr B N Shanthapriya','sadhguruudupi@gmail.com','d033e22ae348aeb5660fc2140aec35850c4da997',9448327884,'Sadhguru Skill Devlopment Centre',' Kinnimulki Udupi ',' Kinnimulki Udupi','Udupi','574118','Karnataka',1,4141,'9.30 AM TO 5:30 PM','SUNDAY',2016,'0820 -2530009','Multipurpose Co-operative Society','2/02/2019','Sadhguruskilldevelopment.com','<p><strong>From</strong> PRESIDENT DESK We are very proud to say Sadhguu Souharda Sahakari Ltd is a Co-operative Institute born with Ethics , Principles and human Values. We provides financial services like, members Savings Account , current accounts, Deposits and loans like other societies , but sahakari activities are not limited to financial matter and extended to trading and health care services. We pride ourselves on our member participation,Co-operation,service and satisfaction; We are always working to reach our members with best services.We are committed to leading the way on ethical, environmental and community members welfare issues. Our Sahakari has a unique ethical policy setting out the way we do business which we&#39;ve developed in full consultation with our members. Our Sahakari website contains more details about our services, our purpose, our objectives and services. You can also find more detail about our health and medical care service busssines through our PMJK Centres. Dr.B.N.Shanthapriya President</p>\r\n','Images','GalleryImages','DirectorsImages','Report','DownloadForm');
 
 /*Table structure for table `report` */
 
-DROP TABLE IF EXISTS `report`;
+DROP TABLE IF EXISTS `Report`;
 
-CREATE TABLE `report` (
+CREATE TABLE `Report` (
   `id` int(255) NOT NULL AUTO_INCREMENT,
   `Head` varchar(255) DEFAULT NULL,
   `Content` text DEFAULT NULL,
@@ -481,15 +480,15 @@ CREATE TABLE `report` (
 
 /*Data for the table `report` */
 
-insert  into `report`(`id`,`Head`,`Content`,`path`) values 
+insert  into `Report`(`id`,`Head`,`Content`,`path`) values 
 (35,'wwwEnergy','<p>ssEnergic</p>\r\n','.pdf'),
 (36,'Good Services','<p>Text File</p>\r\n','35.pdf');
 
 /*Table structure for table `rollingtext` */
 
-DROP TABLE IF EXISTS `rollingtext`;
+DROP TABLE IF EXISTS `RollingText`;
 
-CREATE TABLE `rollingtext` (
+CREATE TABLE `RollingText` (
   `Id` int(255) NOT NULL AUTO_INCREMENT,
   `Content` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`Id`)
@@ -497,14 +496,14 @@ CREATE TABLE `rollingtext` (
 
 /*Data for the table `rollingtext` */
 
-insert  into `rollingtext`(`Id`,`Content`) values 
+insert  into `RollingText`(`Id`,`Content`) values 
 (2,'Good Services');
 
 /*Table structure for table `services` */
 
-DROP TABLE IF EXISTS `services`;
+DROP TABLE IF EXISTS `Services`;
 
-CREATE TABLE `services` (
+CREATE TABLE `Services` (
   `id` int(255) NOT NULL AUTO_INCREMENT,
   `Head` varchar(255) DEFAULT NULL,
   `Content` text DEFAULT NULL,

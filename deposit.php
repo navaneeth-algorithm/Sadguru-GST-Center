@@ -11,13 +11,14 @@
     
 
     <?php
-                  include("dbConnect.php");
-                  $query="SELECT * FROM `Deposits`";
-                	$suc= mysqli_query($conn, $query) or die(mysqli_error($conn));  
-                  if(mysqli_num_rows($suc))
-                  {
-                    // $row=mysqli_fetch_assoc($suc);
-                    while($row = mysqli_fetch_assoc($suc)) {
+                  $conn = $pdo->open();
+                  $sql = "SELECT * FROM `Deposits`";
+                  try{
+                    $stmt = $conn->prepare($sql);
+                    $stmt->execute();
+                    foreach($stmt as $row){
+
+  
 
              ?>
              
@@ -26,19 +27,25 @@
                   <td><a href="#<?php echo $row["shortName"]; ?>">Click Here</a></td>
                 </tr>
                 
-                <?php }}?>
+                <?php
+                    }
+                   // $_SESSION['success'] = 'Data added Successfully';
+                }
+                catch(PDOException $e){
+                    $_SESSION['error'] = $e->getMessage();
+                }
+            $pdo->close();   ?>
                   </table>
 </div>
            
 <div class="w3-center">
             <?php
-                  include("dbConnect.php");
-                  $query="SELECT * FROM `deposits`";
-                	$suc= mysqli_query($conn, $query) or die(mysqli_error($conn));  
-                  if(mysqli_num_rows($suc))
-                  {
-                    // $row=mysqli_fetch_assoc($suc);
-                    while($row = mysqli_fetch_assoc($suc)) {
+                  $conn = $pdo->open();
+                  $sql = "SELECT * FROM `Deposits`";
+                  try{
+                    $stmt = $conn->prepare($sql);
+                    $stmt->execute();
+                    foreach($stmt as $row){
 
              ?>
              <div class="w3-row" id="<?php echo $row["shortName"]; ?>">
@@ -64,6 +71,12 @@
             </div>
              </div>
              <span class="w3-margin"></span>
-                    <?php }}?>
+                    <?php }
+                   // $_SESSION['success'] = 'Data added Successfully';
+                }
+                catch(PDOException $e){
+                    $_SESSION['error'] = $e->getMessage();
+                }
+            $pdo->close(); ?>
             <span class='w3-button w3-dark-gray w3-margin'><a href='#depositsList' style='text-decoration:none'>Move Up</a></span>
 </div>

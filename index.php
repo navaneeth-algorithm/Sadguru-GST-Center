@@ -32,8 +32,11 @@
         <div id="WebContent"  style="width:70%;margin-left:210px;margin-bottom:15px;" class="w3-white w3-myfontCambria">
 
 
-            <?php include('include/header.php'); ?>
-
+            <?php include('include/header.php'); 
+            
+            
+            ?>
+            
 
                 <div class="w3-row w3-padding w3-white" style="width:97%;margin-left:15px;">
                     <!-- Here Goes Middle Content of web   -->
@@ -47,20 +50,25 @@
                             <!-- A
                             nimation of title  -->
                                 <?php
-                                    $rollingText = '';
-                                include("dbconnect.php");
+                                $rollingText = '';
+                                $conn = $pdo->open();
+                                //include("dbconnect.php");
                                 
                                 $sql = "SELECT * FROM RollingText";
-                                $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
-                                
-                                if (mysqli_num_rows($result) > 0) {
-                                    // output data of each row
-                                    while($row = mysqli_fetch_assoc($result)) {
-                                    $rollingText = $row['Content'].' '.$rollingText;
+                                try{
+                                    $stmt = $conn->prepare($sql);
+                                    $stmt->execute();
+                                    foreach($stmt as $row){
+
+                                        $rollingText = $row['Content'].' '.$rollingText;
+                                    }
+                                   // $_SESSION['success'] = 'Data added Successfully';
                                 }
-                            }
-                                        
-                                ?>
+                                catch(PDOException $e){
+                                    $_SESSION['error'] = $e->getMessage();
+                                }
+                            $pdo->close();     
+                            ?>
                             <svg viewBox="0,0,700,100">
                                 <text x="" y="50">
                                     <a href="index.php"><?php echo $rollingText;  ?> </a>

@@ -94,10 +94,12 @@
                   </select>
                   <a id ="yearadd" href="aboutyear.php"  class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i>Add Year</a>
               </div>
+              <a href="#viewtable" data-toggle="modal" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-eye"></i> View Table</a>
         <div class="col-xs-12">
           <div class="box">
             
             <div class="box-header with-border">
+              <form method=POST action="aboutdata_add.php">
               <label for="addaboutname">Select Name</label>
               <select id="addaboutname" name="addaboutname" onchange="fetchYear()">
               <?php
@@ -122,12 +124,14 @@
               
               <label style="margin-left:20px" for="addaboutyear">Select Year</label>
 
-              <select  id="addaboutyear">
+              <select  id="addaboutyear" name="addaboutyear">
 
               </select>
 
-              <input style="margin-left:20px" type="text" placeholder="Enter Data" />
-              <a id ="dataadd" href=""  class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i>ADD</a>
+              <input style="margin-left:20px" id="datapoints" name="datapoints" type="number" placeholder="Enter Data" required/>
+              <button type="submit" class="btn btn-primary btn-sm btn-flat" name="add"><i class="fa fa-plus"></i>ADD</button>
+              <!--<a id ="dataadd" onclick="addData()" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i>ADD</a> -->
+              </form>
             </div>
 
             <div class="box-body">
@@ -143,6 +147,7 @@
   </div>
   	<?php include 'includes/footer.php'; ?>
     <?php include 'includes/aboutdata_modal.php'; ?>
+    <?php include 'includes/viewdatatable_modal.php'; ?>
 
 </div>
 <!-- ./wrapper -->
@@ -180,7 +185,7 @@ function bindgrid(ddlshow) {
    
  	  slno++;
 	  
-     ahref="<a class='Myedit' class='btn btn-primary btn-sm btn-flat class='edit' id='Myedit' href='javascript:editModal("+field.Id+")'><i class='fa fa-pencil' aria-hidden='true' ></i></a>  | <a onclick='javascript:confirmationDelete($(this));return false;' class='delete' href='javascript:DeleteRecord("+field.Id+")'><i class='fa fa-times' aria-hidden='true' ></i></a>";
+     ahref="<a class='Myedit' class='btn btn-primary btn-sm btn-flat class='edit' id='Myedit' href='javascript:editModal("+field.Id+")'><i class='fa fa-pencil' aria-hidden='true' ></i></a>  | <a onclick='javascript:confirmationDelete($(this));return false;'  href='javascript:DeleteRecord("+field.Id+")'><i class='fa fa-times' aria-hidden='true' ></i></a>";
     $("#example1").append("<tr><td>"+slno+"</td><td style='font-size: 16px;'>"+field.Name+"</td><td style='font-size: 16px;'>"+field.Year+"</td><td style='font-size: 16px;'>"+field.Data+"</td><td>"+ahref);
     
     $("#example1").append("</td></tr>");
@@ -199,24 +204,11 @@ function bindgrid(ddlshow) {
   function DeleteRecord(pkval)
   {
 
-  //var url = "sub/deletecommon.php?pkvId="+pkval+"&Tname=Employee";
-  //alert(url);
-  var url="";
-  $.getJSON(url, function(result) {
-
-  console.log(result);
- 
-   if (result == "success") {
-							
- alert('Employee Deleted Successfully!');
-//	window.location.href="Employee.php"; 
-				 }                       
+  
 						
-	else if (result == "error") {
-	alert('Sorry! Something went wrong..');
-                                                   }
-						
-  });
+    $('#delete').modal('show');
+    var id = pkval;
+    getRow(id);
 
 
   }
@@ -256,7 +248,58 @@ function getRow(id){
     }
   });
 }
+function addData(){
 
+  var yearid = $("#addaboutyear").val();
+  var nameid = $("#addaboutname").val();
+  var datapoints = $("#datapoints").val();
+  //alert(datapoints);
+  if(datapoints.length!=0 && yearid!=null){
+    alert(datapoints.length);
+
+    $.ajax({
+    type: 'POST',
+    url: 'aboutdata_add.php',
+    data: {
+      adddata:"add",
+      yearid:yearid,
+      nameid:nameid,
+      datapoints:datapoints
+      },
+    dataType: 'json',
+    success: function(response){
+      //$('.catid').val(response.Id);
+      //$('#edit_buisnessname').val(response.NameId);
+      //$('#edit_buisnessyear').val(response.YearId);
+      //$('#edit_data').val(response.Data);
+     // $("#editor2").val(response.Description);
+      //CKEDITOR.instances["editor2"].setData(response.Content);
+      //$('.catname').html(response.Name);
+    }
+  });
+
+  }
+  else{
+    if(nameid==0)
+    alert("Select Name");
+    else if(yearid==null)
+    alert("Data Already entered");
+    else
+    alert("Enter Data");
+
+  }
+ // $("#dataadd").attr("disabled", true);
+  //alert("YEARID "+yearid+" NAMEID "+nameid);
+ /*if(yearid==null){
+
+   alert("Year is not Selected");
+ }
+ else{
+
+
+ }*/
+
+}
 function fetchYear(){
   //alert("Hey");
   var nameid = $("#addaboutname").val();

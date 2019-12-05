@@ -1,25 +1,21 @@
 <?php
-                  include("dbConnect.php");
-                  $query="SELECT * FROM `Map`";
-                    $suc= mysqli_query($conn, $query) or die(mysqli_error($conn));  
-                    
-                  if(mysqli_num_rows($suc))
-                  {
-                    // $row=mysqli_fetch_assoc($suc);
-                    $row = mysqli_fetch_assoc($suc);
-                    $latitude = $row['latitude'];
-                    $longitude = $row['longitude'];
-                  }
-                  $query="SELECT * FROM `Parameter`";
-                  $suc= mysqli_query($conn, $query) or die(mysqli_error($conn));  
-                if(mysqli_num_rows($suc))
-                {
-                  // $row=mysqli_fetch_assoc($suc);
-                  $row = mysqli_fetch_assoc($suc);
-                  $Address = $row['Address'];
-                  $Email = $row['Email'];
-                  $Phone = $row['PhoneNumber'];
+                  
+                  try{
+                    $query="SELECT * FROM `Map`";
+                    $stmt = $conn->prepare($query);
+                    $stmt->execute();
+                    foreach($stmt as $row){
+
+                        $latitude = $row['latitude'];
+                        $longitude = $row['longitude'];
+                    }
+                   // $_SESSION['success'] = 'Data added Successfully';
                 }
+                catch(PDOException $e){
+                    $_SESSION['error'] = $e->getMessage();
+                }
+            $pdo->close();     
+                  
         ?>
 
 
@@ -52,13 +48,13 @@
                                             Contacts
                                         </h3>
                                         <p><i  class="fa fa-home">
-                                            <?php echo $Address;  ?></i>
+                                            <?php echo $address1.' '.$address2.' '.' '.$address3;  ?></i>
                                         </p>
                                         <p>
-                                            <i class="fa fa-envelope">  <?php echo $Email;  ?> </i>
+                                            <i class="fa fa-envelope">  <?php echo $adminEmail;  ?> </i>
                                         </p>
                                         <p>
-                                            <i class="fa fa-phone"> <?php echo $Phone;   ?></i>
+                                            <i class="fa fa-phone"> <?php echo $contactDetails;   ?></i>
                                         </p>
                                         <h3>
                                             Follow Us On

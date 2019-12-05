@@ -3,13 +3,14 @@
             
         <div class=" w3-margin w3-content w3-display-container w3-padding w3-light-gray w3-card" style="padding:10px">
         <?php
-                  include("dbConnect.php");
-                  $query="SELECT * FROM `News`";
-                	$suc= mysqli_query($conn, $query) or die(mysqli_error($conn));  
-                  if(mysqli_num_rows($suc))
-                  {
-                    // $row=mysqli_fetch_assoc($suc);
-                    while($row = mysqli_fetch_assoc($suc)) {
+                                                  $conn = $pdo->open();
+                                                  //include("dbconnect.php");
+                                                  
+                  $sql = "SELECT * FROM `News`";
+                  try{
+                  $stmt = $conn->prepare($sql);
+                  $stmt->execute();
+                  foreach($stmt as $row){
 
              ?>
             <div class="infoSlides ">
@@ -17,7 +18,17 @@
                 <p><?php echo $row['Content'];  ?></p>
             </div>
 
-            <?php }} ?>
+            <?php 
+             }
+             // $_SESSION['success'] = 'Data added Successfully';
+          }
+          catch(PDOException $e){
+              $_SESSION['error'] = $e->getMessage();
+            }
+            $pdo->close();     
+            
+            
+            ?>
 
             <div class="" style="">
                 <button style="" class="w3-button w3-tiny w3-round  w3-gray" onclick="plusDivs(-1)">&#10094;</button>

@@ -1,28 +1,6 @@
 
 <?php
-include("dbConnect.php");
-$query="SELECT * FROM `Parameter`";
-$suc= mysqli_query($conn, $query) or die(mysqli_error($conn));  
-if(mysqli_num_rows($suc))
-{
-  // $row=mysqli_fetch_assoc($suc);
-  $row = mysqli_fetch_assoc($suc);
-  $companyName = $row['CompanyName'];
-  $contactDetails = $row['PhoneNumber'];
-  	$companyName = $row['CompanyName'];
-  	$contactDetails = $row['PhoneNumber'];
-	$adminName = $row['Name'];
-	$adminEmail = $row['Email'];
-	$adminPassword = $row['Password'];
-	$adminId =1;
-  $row = mysqli_fetch_assoc($suc);
-  $imagePath = $row['Name'];
-  $row = mysqli_fetch_assoc($suc);
-  $downloadFolder = $row['Name'];
-  $row = mysqli_fetch_assoc($suc);
-  $reportFolder = $row['Name'];
-  
-}
+include("include/session.php");
 ?>
 
 <header class="">    
@@ -59,7 +37,6 @@ if(mysqli_num_rows($suc))
                             <a href="headfootTemp.php?page=branch" class="w3-bar-item w3-button ">Branch</a>
                             <a href="headfootTemp.php?page=report" class="w3-bar-item w3-button ">Report</a>
                             <a href="headfootTemp.php?page=notice" class="w3-bar-item w3-button ">Notice Boards</a>
-                            <a href="headfootTemp.php?page=news" class="w3-bar-item w3-button ">Latest News</a>
                             <a href="headfootTemp.php?page=links" class="w3-bar-item w3-button ">Links</a>
                             <a href="headfootTemp.php?page=contact" class="w3-bar-item w3-button ">Contacts</a>
                             <a href="headfootTemp.php?page=download" class="w3-bar-item w3-button ">Downloads</a>

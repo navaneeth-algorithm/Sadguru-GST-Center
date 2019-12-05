@@ -1,16 +1,4 @@
 <div class="w3-margin">
-<?php
-    
-  include("dbconnect.php");
-  
-  $sql = "SELECT * FROM Parameter";
-  $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
-  
-  if (mysqli_num_rows($result) > 0) {
-      // output data of each row
-     $row = mysqli_fetch_assoc($result);
-          
-?>
 
 <div class="w3-row">
     <!-- Profile Part -->
@@ -23,7 +11,7 @@
             Name:
         </div>
         <div class="w3-col s8">
-            <?php echo $row['Name'];  ?>
+            <?php echo $adminName;  ?>
         </div>        
     </div>
 
@@ -32,7 +20,7 @@
         Date of Registration:
         </div>
         <div class="w3-col s8">
-            <?php echo $row['Name'];  ?>
+            <?php echo $dateofregistration;  ?>
         </div>        
     </div>
     <div class="w3-row">
@@ -40,7 +28,7 @@
         Address:
         </div>
         <div class="w3-col s8">
-            <?php echo $row['Address'];  ?>
+            <?php echo $address1.' '.$address2.' '.$address3  ?>
         </div>        
     </div>
     <div class="w3-row">
@@ -48,7 +36,7 @@
         Phone:
         </div>
         <div class="w3-col s8">
-            <?php echo $row['PhoneNumber'];  ?>
+            <?php echo $contactDetails;  ?>
         </div>        
     </div>
     <div class="w3-row">
@@ -56,7 +44,7 @@
         E_mail:
         </div>
         <div class="w3-col s8">
-            <?php echo $row['Email'];  ?>
+            <?php echo $adminEmail;  ?>
         </div>        
     </div>
     <div class="w3-row">
@@ -64,7 +52,7 @@
         Website:
         </div>
         <div class="w3-col s8">
-            <?php echo $row['Name'];  ?>
+            <?php echo $domainname;  ?>
         </div>        
     </div>
     <div class="w3-row">
@@ -72,7 +60,7 @@
         Established In:
         </div>
         <div class="w3-col s8">
-            <?php echo $row['EstablishedIn'];  ?>
+            <?php echo $establishedin;  ?>
         </div>        
     </div>
     <div class="w3-row">
@@ -80,7 +68,7 @@
         Weekly Holiday:
         </div>
         <div class="w3-col s8">
-            <?php echo $row['WeeklyHoliday'];  ?>
+            <?php echo $weeklyholiday;  ?>
         </div>        
     </div>
     <div class="w3-row">
@@ -88,34 +76,40 @@
         Working Hours:
         </div>
         <div class="w3-col s8">
-            <?php echo $row['Name'];  ?>
+            <?php echo $workinghour;
+              ?>
         </div>        
     </div>
 
 
 </div>
-
-  <?php  } ?>
         <div class="" style="margin-top:15px;">
 
                 <?php
-                        include("dbConnect.php");
+                        //include("dbConnect.php");
                         $query="SELECT * FROM `Home`";
-                            $suc= mysqli_query($conn, $query) or die(mysqli_error($conn));  
-                        if(mysqli_num_rows($suc))
-                        {
-                            // $row=mysqli_fetch_assoc($suc);
-                            while($row = mysqli_fetch_assoc($suc)) {
+                        try{
+                            $stmt = $conn->prepare($query);
+                            $stmt->execute();
+                            foreach($stmt as $row){
+
+                               echo '<div class="w3-row">
+                                <!-- Title of Content -->
+                                <span class="w3-text-red w3-large">'.$row['Head'].'</span>
+                                </div>
+                                <div class="w3-row" style="text-align:justify">
+                                <!-- Decription -->';
+                                 echo $row['Content'];
+                                 echo '</div><span class="w3-margin"></span>';
+                            }
+                           // $_SESSION['success'] = 'Data added Successfully';
+                        }
+                        catch(PDOException $e){
+                            $_SESSION['error'] = $e->getMessage();
+                        }
+                    $pdo->close();     
                 ?>
-                <div class="w3-row">
-                    <!-- Title of Content -->
-                    <span class="w3-text-red w3-large"><?php echo $row['Head'];  ?></span>
-                </div>
-                <div class="w3-row" style="text-align:justify">
-                    <!-- Decription -->
-                    <?php echo $row['Content'];  ?>
-                </div>
-                <span class="w3-margin"></span>
-                <?php }} ?>
+                
+                
         </div>
 </div>

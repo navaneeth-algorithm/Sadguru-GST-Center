@@ -2,24 +2,30 @@
 <?php
 	include 'includes/session.php';
 
-	if(isset($_POST['add'])){
-		$title = $_POST['name'];
+	
+		if(isset($_POST['add'])){
+		$nameid = $_POST['addaboutname'];
+		//echo $nameid;
+		$yearid = $_POST['addaboutyear'];
+		//echo $yearid;
+		$datapoints = $_POST['datapoints'];
+		//echo $datapoints;
 
 		$conn = $pdo->open();
 			try{
-				$stmt = $conn->prepare("INSERT INTO `businessstatistics` (`Name`) VALUES (:title)");
-				$stmt->execute(['title'=>$title]);
-				$_SESSION['success'] = 'About Name added successfully';
+				$stmt = $conn->prepare("INSERT INTO `BusinessStatisticsData` (`NameId`,`YearId`,`Data`) VALUES (:nameid,:yearid,:data)");
+				$stmt->execute(['nameid'=>$nameid,'yearid'=>$yearid,'data'=>$datapoints]);
+				$_SESSION['success'] = 'Data added Successfully';
 			}
 			catch(PDOException $e){
 				$_SESSION['error'] = $e->getMessage();
 			}
 		$pdo->close();
-	}
-	else{
-		$_SESSION['error'] = 'Fill up About Name form first';
-	}
+		}else{
+			$_SESSION['error']="Fill the Data Form";
+		}
 
-	header('location: aboutname.php');
+
+	header('location: aboutdata.php');
 
 ?>

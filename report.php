@@ -2,13 +2,15 @@
 <div class="w3-row w3-center w3-margin">  
         <span class="w3-row w3-margin w3-xlarge">REPORTS</span>
         <?php
-                  include("dbConnect.php");
-                  $query="SELECT * FROM `Report`";
-                	$suc= mysqli_query($conn, $query) or die(mysqli_error($conn));  
-                  if(mysqli_num_rows($suc))
-                  {
-                    // $row=mysqli_fetch_assoc($suc);
-                    while($row = mysqli_fetch_assoc($suc)) {
+                 $rollingText = '';
+                 $conn = $pdo->open();
+                 //include("dbconnect.php");
+                 
+                 $sql = "SELECT * FROM `Report`";
+                 try{
+                     $stmt = $conn->prepare($sql);
+                     $stmt->execute();
+                     foreach($stmt as $row){
 
              ?>
              
@@ -32,6 +34,15 @@
                         PDFObject.embed("<?php echo $reportFolder."/".$row['path']; ?>", "<?php echo '#pdf'.$row['id']; ?>",options);
                 </script>
         </span>
-        <?php }}?>
+        <?php 
+        }
+        // $_SESSION['success'] = 'Data added Successfully';
+     }
+     catch(PDOException $e){
+         $_SESSION['error'] = $e->getMessage();
+     }
+ $pdo->close();   
+        
+        ?>
 </div>
 

@@ -2,7 +2,7 @@
 
 Class Database{
  
-	private $server = "mysql:host=localhost;dbname=society";
+	private $server = "mysql:host=localhost;dbname=Society";
 	private $username = "root";
 	private $password = "0RPCYNBK2KxCfTvZ";
 

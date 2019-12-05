@@ -8,13 +8,15 @@
       </tr>
     </thead>
     <?php
-                  include("dbConnect.php");
-                  $query="SELECT * FROM `Download`";
-                	$suc= mysqli_query($conn, $query) or die(mysqli_error($conn));  
-                  if(mysqli_num_rows($suc))
-                  {
-                    // $row=mysqli_fetch_assoc($suc);
-                    while($row = mysqli_fetch_assoc($suc)) {
+                
+                $conn = $pdo->open();
+                //include("dbconnect.php");
+                                                  
+                 $sql = "SELECT * FROM `Download`";
+                 try{
+                 $stmt = $conn->prepare($sql);
+                 $stmt->execute();
+                 foreach($stmt as $row){
         ?>
     <tr>
       <td><?php echo $row['Head']; ?></td>
@@ -22,7 +24,13 @@
       <td><a href="<?php echo $downloadFolder."/".$row['path'] ?>"><i class='fa fa-fw fa-download'></i></a></td>
     </tr>
     <?php
-                    }}  
+                                                       }
+                                                       // $_SESSION['success'] = 'Data added Successfully';
+                                                    }
+                                                    catch(PDOException $e){
+                                                        $_SESSION['error'] = $e->getMessage();
+                                                    }
+                                                $pdo->close();   
     ?>
   </table>
     

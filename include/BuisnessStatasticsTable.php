@@ -2,11 +2,29 @@
 
 <tr>
         <th>Name</th>
-        <th>Year 2015</th>
-        <th>Year 2016</th>
-        <th>Year 2017</th>
-        <th>Year 2018</th>
-        <th>Year 2019</th>
+        <?php
+         $rollingText = '';
+       $conn = $pdo->open();
+                                //include("dbconnect.php");
+                                
+       $sql = "SELECT * FROM `BusinessStatisticsYear`";
+                                try{
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
+      foreach($stmt as $row){
+
+        ?>
+        <th>Year <?php echo $row['Year']; ?></th>
+        <?php 
+         }
+         // $_SESSION['success'] = 'Data added Successfully';
+      }
+      catch(PDOException $e){
+          $_SESSION['error'] = $e->getMessage();
+      }
+  $pdo->close();     
+        ?>
+
  </tr>
     <?php 
 

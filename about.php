@@ -1,13 +1,12 @@
 <div class="">
 
         <?php
-                  include("dbConnect.php");
+                  
                   $query="SELECT * FROM `About`";
-                	$suc= mysqli_query($conn, $query) or die(mysqli_error($conn));  
-                  if(mysqli_num_rows($suc))
-                  {
-                    // $row=mysqli_fetch_assoc($suc);
-                    while($row = mysqli_fetch_assoc($suc)) {
+                	try{
+                    $stmt = $conn->prepare($query);
+                    $stmt->execute();
+                    foreach($stmt as $row){
         ?>
         <div class="w3-row">
             <!-- Title of Content -->
@@ -18,7 +17,17 @@
             <?php echo $row['Content'];  ?>
         </div>
         <span class="w3-margin"></span>
-        <?php }} ?>
+        <?php
+      
+                }
+              // $_SESSION['success'] = 'Data added Successfully';
+            }
+          catch(PDOException $e){
+          $_SESSION['error'] = $e->getMessage();
+          }
+      $pdo->close();    
+      
+     ?>
       <!--Buisness Statastics  -->
      <?php include('include/BuisnessStatastics.php'); ?>
 </div>

@@ -135,7 +135,7 @@ CREATE TABLE `businessstatisticsdata` (
   KEY `FKBSYearId` (`YearId`),
   CONSTRAINT `FKBSNameId` FOREIGN KEY (`NameId`) REFERENCES `businessstatistics` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FKBSYearId` FOREIGN KEY (`YearId`) REFERENCES `businessstatisticsyear` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
 
 /*Data for the table `businessstatisticsdata` */
 
@@ -143,7 +143,7 @@ insert  into `businessstatisticsdata`(`Id`,`NameId`,`YearId`,`Data`) values
 (1,1,1,2016456),
 (2,1,2,1985801),
 (3,1,3,1755904),
-(4,1,4,1847290),
+(4,1,4,1847291),
 (5,1,5,1733430),
 (6,2,1,49505),
 (7,2,2,31917),
@@ -157,7 +157,7 @@ insert  into `businessstatisticsdata`(`Id`,`NameId`,`YearId`,`Data`) values
 (15,3,5,1013689),
 (16,4,1,806425),
 (17,4,2,806208),
-(18,4,3,798855),
+(18,4,3,798856),
 (19,4,4,806968),
 (20,4,5,790204),
 (21,5,1,247510),
@@ -184,7 +184,7 @@ CREATE TABLE `businessstatisticsyear` (
   `Id` int(255) NOT NULL AUTO_INCREMENT,
   `Year` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 /*Data for the table `businessstatisticsyear` */
 

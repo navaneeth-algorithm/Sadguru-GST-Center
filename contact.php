@@ -1,12 +1,3 @@
-<?php
-    include("dbConnect.php");
-    $query="SELECT * FROM `Parameter`";
-    $suc= mysqli_query($conn, $query) or die(mysqli_error($conn));  
-    if(mysqli_num_rows($suc))
-    {
-        // $row=mysqli_fetch_assoc($suc);
-        $row = mysqli_fetch_assoc($suc);
-    ?>
 
 <div class="w3-margin">
         <div class="w3-row w3-margin w3-text-red ">
@@ -14,24 +5,24 @@
             HEAD OFFICE
         </div>
         <div class="w3-row w3-margin ">
-            <?php echo $row['CompanyName'];    ?>
+            <?php echo $companyName;    ?>
         </div>
 
         <div class="w3-row w3-margin ">
             <div class="w3-row w3-large w3-text-red">Address</div>
-            <div class="w3-row"><?php echo $row['Address'];?></div>
+            <div class="w3-row"><?php echo $address1.' '.$address2.' '.$address3;?></div>
         </div>
         <div class="w3-row w3-margin">
             <div class="w3-row w3-large w3-text-red">Phone Number</div>
-            <div class="w3-row8"><?php echo $row['PhoneNumber'];?></div>
+            <div class="w3-row8"><?php echo $contactDetails;?></div>
         </div>
         <div class="w3-row w3-margin">
             <div class="w3-row w3-large w3-text-red">Email</div>
-            <div class="w3-row"><?php echo $row['Email'];?></div>
+            <div class="w3-row"><?php echo $adminEmail;?></div>
         </div>
         <div class="w3-row w3-margin">
             <div class="w3-row w3-large w3-text-red">Site</div>
-            <div class="w3-row"><?php echo $row['DomainName'];?></div>
+            <div class="w3-row"><?php echo $domainname;?></div>
         </div>
 </div>
         <div class="w3-row w3-margin">
@@ -71,5 +62,3 @@
             </form>
 
         </div>
-
-    <?php   }   ?>

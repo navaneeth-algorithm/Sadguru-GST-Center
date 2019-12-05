@@ -1,23 +1,19 @@
 <div class="">
  <?php
-                  include("dbConnect.php");
-                  $query="SELECT Name FROM `parameter` WHERE id=2";
-                  $suc= mysqli_query($conn, $query) or die(mysqli_error($conn));
-                  $row = mysqli_fetch_assoc($suc);
-                  $path = $row['Name'];
-                  //echo $path;
-                  //echo $path;
-                  $query="SELECT * FROM `gallery`";
-                	$suc= mysqli_query($conn, $query) or die(mysqli_error($conn));  
-                  if(mysqli_num_rows($suc))
-                  {
-                    $count=1;
-                    // $row=mysqli_fetch_assoc($suc);
-                    while($row = mysqli_fetch_assoc($suc)) {
+                  $conn = $pdo->open();
+                  //include("dbconnect.php");
+                                                  
+                  $sql = "SELECT * FROM `gallery`";
+                  try{
+                  $stmt = $conn->prepare($sql);
+                  $stmt->execute();
+                  $count = 0;
+                  foreach($stmt as $row){
+ 
                       ?>
                         <div class="w3-col s4 w3-margin">
                           <div class="w3-card">
-                          <img src="<?php echo $path.'/'.$row['path']; ?>" width=200px height=200px style="width:100%">
+                          <img src="<?php echo $galleryImages.'/'.$row['path']; ?>" width=200px height=200px style="width:100%">
                           <div class="w3-container">
                             <p><?php echo $row['title']; ?></p>
                           </div>
@@ -32,6 +28,12 @@
                             </div>
                         </div>
                     -->
-                <?php $count = $count +1; }} ?>
+                <?php $count = $count +1;                                     }
+                                   // $_SESSION['success'] = 'Data added Successfully';
+                                }
+                                catch(PDOException $e){
+                                    $_SESSION['error'] = $e->getMessage();
+                                }
+                            $pdo->close();  ?>
                 
 </div>

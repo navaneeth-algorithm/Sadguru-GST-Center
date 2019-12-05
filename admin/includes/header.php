@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../bower_components/select2/dist/css/select2.min.css">
   	<!-- Theme style -->
   	<link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+    
   	<!-- DataTables -->
     <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
     <!-- daterange picker -->

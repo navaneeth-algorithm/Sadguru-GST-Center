@@ -51,25 +51,26 @@
                         <div class="w3-col s9">
                             <!-- Here Goes Content Excludeing banner & right bar Con-->
                             <!-- Animation of title  -->
-                                <?php
+                            <?php
                                 $rollingText = '';
-                                include("dbconnect.php");
+                                $conn = $pdo->open();
+                                //include("dbconnect.php");
                                 
                                 $sql = "SELECT * FROM RollingText";
-                                $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
-                                
-                                if (mysqli_num_rows($result) > 0) {
-                                    // output data of each row
-                                    //echo 'Out while';
-                                    while($row = mysqli_fetch_assoc($result)) {
-                                    
-                                    $rollingText = $row['Content'].' '.$rollingText;
-                                    //echo 'Green d';
+                                try{
+                                    $stmt = $conn->prepare("SELECT * FROM RollingText");
+                                    $stmt->execute();
+                                    foreach($stmt as $row){
+
+                                        $rollingText = $row['Content'].' '.$rollingText;
+                                    }
+                                   // $_SESSION['success'] = 'Data added Successfully';
                                 }
-                                
-                            }
-                                        
-                                ?>
+                                catch(PDOException $e){
+                                    $_SESSION['error'] = $e->getMessage();
+                                }
+                            $pdo->close();     
+                            ?>
                             <svg viewBox="0,0,700,100">
                                 <text x="" y="50">
                                     <a href="index.php"><?php echo ''.$rollingText;  ?> </a>

@@ -47,7 +47,7 @@
 
                
                     <div class="w3-card w3-margin">
-                        <img src="<?php echo $imagePath."/".$presidentImage;  ?>" width=200px height=200px style="width:100%">
+                        <img src="<?php echo $directorImages."/".$presidentImage;  ?>" width=200px height=200px style="width:100%">
                         <div class="w3-container">
                             <p><?php echo $presidentName; ?></p>
                         </div>
@@ -71,7 +71,7 @@
 
                 
                     <div class="w3-card w3-margin">
-                        <img src="<?php echo $imagePath."/".$vicepresidentImage;  ?>" width=200px height=200px style="width:100%">
+                        <img src="<?php echo $directorImages."/".$vicepresidentImage;  ?>" width=200px height=200px style="width:100%">
                         <div class="w3-container">
                             <p><?php echo $vicepresidentName;  ?></p>
                         </div>
@@ -111,7 +111,7 @@
             
                 <div class="w3-col s4 w3-margin">
                     <div class="w3-card">
-                        <img src="<?php echo $imagePath."/".$row['Image'];  ?>" width=100px height=100px style="width:100%">
+                        <img src="<?php echo $directorImages."/".$row['Image'];  ?>" width=100px height=100px style="width:100%">
                         <div class="w3-container">
                             <p><?php echo $directorName; ?></p>
                         </div>
@@ -137,7 +137,7 @@
 
             <div class="w3-card" style="width:50%;margin-left:150px">
                 <span class="w3-margin w3-large w3-text-red"> President Message</span>
-                <img src="<?php echo $imagePath."/".$presidentImage;  ?>" alt="Person" style="width:100%">
+                <img src="<?php echo $directorImages."/".$presidentImage;  ?>" alt="Person" style="width:100%">
                 <div class="w3-container">
                     
                     <p><?php echo $presidentName;?></p>

@@ -3,7 +3,7 @@
                   $conn = $pdo->open();
                   //include("dbconnect.php");
                                                   
-                  $sql = "SELECT * FROM `gallery`";
+                  $sql = "SELECT * FROM `Gallery`";
                   try{
                   $stmt = $conn->prepare($sql);
                   $stmt->execute();
